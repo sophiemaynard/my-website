@@ -3,230 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sophie Maynard | Artist</title>
+    <title>Sophie Maynard | Bespoke Artwork</title>
     <style>
-        /* This makes the scroll feel buttery smooth */
-html {
-    scroll-behavior: smooth;
-}
+        /* 1. GENERAL STYLES */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #2c2c2c; background-color: #fdfcfb; }
+        
+        /* 2. NAVIGATION */
+        nav { position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); padding: 15px; display: flex; 
+              justify-content: center; gap: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); z-index: 1000; }
+        nav a { text-decoration: none; color: #555; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+        nav a:hover { color: #000; }
 
-nav {
-    position: sticky;
-    top: 0;
-    background: white;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
+        /* 3. HERO SECTION */
+        .hero { 
+            height: 70vh; 
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; color: white; padding: 20px;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+        /* 4. CONTENT SECTIONS */
+        section { padding: 100px 20px; max-width: 1000px; margin: auto; text-align: center; }
+        h2 { font-size: 2.2rem; margin-bottom: 30px; border-bottom: 1px solid #eee; display: inline-block; padding-bottom: 10px; font-weight: normal; }
+        
+        /* 5. PORTFOLIO GRID */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .gallery-item { text-align: center; cursor: pointer; transition: transform 0.3s ease; }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 2px; }
+        .gallery-item p { margin-top: 10px; font-size: 0.85rem; color: #777; font-style: italic; }
 
-section {
-    padding: 80px 20px; /* Space for the sticky menu */
-    text-align: center;
-    max-width: 1000px;
-    margin: 0 auto;
-}
+        /* 6. TESTIMONIALS */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 20px; }
+        .testimonial-item { font-style: italic; color: #555; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .testimonial-item span { display: block; margin-top: 15px; font-weight: bold; font-style: normal; color: #2c2c2c; }
 
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    font-style: italic;
-}
-        .gallery {
-    display: grid;
-    /* This tells the browser: "Make columns at least 250px wide, 
-       but fill the rest of the space automatically" */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px; /* Space between images */
-    margin-top: 20px;
-}
-
-.gallery-item img {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* Forces a perfect square */
-    object-fit: cover;   /* Crops the image to fill the square */
-    border-radius: 4px;
-    cursor: pointer;      /* Makes it look clickable */
-    transition: 0.3s;
-}
-
-.gallery-item img:hover {
-    opacity: 0.8;        /* Dims slightly when hovered */
-}
-
-/* This is the hidden 'popup' styling */
-#lightbox {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-}
-
-#lightbox img {
-    max-width: 90%;
-    max-height: 80%;
-    border: 3px solid white;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 250px; /* Forces all thumbnails to be the same height */
-    object-fit: cover; /* Crops the image to fit the square without stretching it */
-    border-radius: 3px;
-    display: block;
-}
-
-.gallery-item p {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #555;
-}
-        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
-        header { background: #f4f4f4; padding: 2rem; text-align: center; }
-        section { padding: 2rem; max-width: 800px; margin: auto; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .gallery img { width: 100%; border-radius: 8px; }
-        .price-list { background: #fffaf0; padding: 20px; border-radius: 8px; border: 1px solid #ddd; }
-        form { display: flex; flex-direction: column; }
-        input, textarea, button { margin-bottom: 10px; padding: 10px; font-size: 1rem; }
-        button { background: #333; color: white; border: none; cursor: pointer; }
+        /* 7. LIGHTBOX */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
+        #lightbox img { max-width: 90%; max-height: 85%; border: 4px solid white; }
     </style>
 </head>
 <body>
-    
+
 <nav>
     <a href="#about">The Artist</a>
     <a href="#philosophy">Philosophy</a>
-    <a href="#gallery">Portfolio</a>
+    <a href="#portfolio">Portfolio</a>
     <a href="#commissions">Commission Guide</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
 </nav>
-    
-<header>
+
+<header class="hero">
     <h1>Sophie Maynard</h1>
-    <p>Bespoke Artwork</p>
 </header>
 
 <section id="about">
     <h2>The Artist</h2>
-    <p>Describe your journey here...</p>
+    <p>Based in Berkhamsted, I am a fine artist specialising in contemporary portraiture. My work seeks to find the balance between technical precision and the raw, emotional character of my subjects.</p>
 </section>
 
-<section id="philosophy">
-    <h2>Philosophy</h2>
-    <p>Talk about your artistic vision...</p>
-</section>
-
-<section id="gallery">
-    <h2>Portfolio</h2>
-    
-    <div class="gallery">
-        </div>
-
-    <div class="gallery">
-        <div class="gallery-item">
-            <img src="bay-pony-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a bay pony] by Sophie Maynard">
-            <p>Artwork Title 1</p>
-        </div>
-        <div class="gallery-item">
-            <img src="black-cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a black Cocker Spaniel] by Sophie Maynard">
-            <p>Artwork Title 2</p>
-        </div>
-        <div class="gallery-item">
-            <img src="black-white-whippet-greyhound-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a black and white whippet] by Sophie Maynard">
-            <p>Artwork Title 3</p>
-        </div>
-        <div class="gallery-item">
-            <img src="black-white-whippet-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a black and white whippet] by Sophie Maynard">
-            <p>Artwork Title 4</p>
-        </div>
-        <div class="gallery-item">
-            <img src="chestnut-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a chestnut horse] by Sophie Maynard">
-            <p>Artwork Title 5</p>
-        </div>
-        <div class="gallery-item">
-            <img src="cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Colourful acrylic pet portrait painting of a Cocker Spaniel] by Sophie Maynard">
-            <p>Artwork Title 6</p>
-        </div>
-        <div class="gallery-item">
-            <img src="two-horses-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of two horses] by Sophie Maynard">
-            <p>Artwork Title 7</p>
-        </div>
-        <div class="gallery-item">
-            <img src="colourful-bay-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Colourful acrylic pet portrait painting of a bay horse] by Sophie Maynard">
-            <p>Artwork Title 8</p>
-        </div>
-        <div class="gallery-item">
-            <img src="dark-bay-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a dark bay horse] by Sophie Maynard">
-            <p>Artwork Title 9</p>
-        </div>
-        <div class="gallery-item">
-            <img src="grey-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a grey horse] by Sophie Maynard">
-            <p>Artwork Title 10</p>
-        </div>
-        <div class="gallery-item">
-            <img src="show-cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a cocker spaniel lying down] by Sophie Maynard">
-            <p>Artwork Title 11</p>
-        </div>
-        <div class="gallery-item">
-            <img src="sleeping-curled-whippet-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a black and white whippet sleeping] by Sophie Maynard">
-            <p>Artwork Title 12</p>
-        </div>
-        <div class="gallery-item">
-            <img src="staffordshire-bull-terrier-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a blue Staffordshire Bull Terrier] by Sophie Maynard">
-            <p>Artwork Title 13</p>
-        </div>
-        <div class="gallery-item">
-            <img src="standard-schnauzer-pet-portrait-acrylic-painting-sophie-maynard.jpg" alt="[Acrylic pet portrait painting of a Standard Schnauzer] by Sophie Maynard">
-            <p>Artwork Title 14</p>
-        </div>
+<section id="philosophy" style="background-color: #f9f7f5; max-width: 100%;">
+    <div style="max-width: 1000px; margin: auto;">
+        <h2>The Philosophy</h2>
+        <p>I believe that every painting is a conversation. Whether it is a pet portrait or a landscape, my goal is to distill the essence of the subject—capturing not just a likeness, but a moment in time that feels permanent and tactile.</p>
     </div>
 </section>
 
-<section id="commissions">
-    <h2>Commission Guide</h2>
-    <p>Explain your process and pricing...</p>
+<section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="gallery">
+        <div class="gallery-item"><img src="staffordshire-bull-terrier-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Staffordshire Bull Terrier</p></div>
+        <div class="gallery-item"><img src="cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Cocker Spaniel</p></div>
+        <div class="gallery-item"><img src="black-white-whippet-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Whippet Portrait</p></div>
+        <div class="gallery-item"><img src="black-white-whippet-greyhound-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Whippet & Greyhound</p></div>
+        <div class="gallery-item"><img src="show-cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Show Cocker Spaniel</p></div>
+        <div class="gallery-item"><img src="chestnut-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Chestnut Horse</p></div>
+        <div class="gallery-item"><img src="bay-pony-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Bay Pony</p></div>
+        <div class="gallery-item"><img src="colourful-bay-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Colourful Bay Horse</p></div>
+        <div class="gallery-item"><img src="grey-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Grey Horse</p></div>
+        <div class="gallery-item"><img src="dark-bay-horset-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Dark Bay Horse</p></div>
+        <div class="gallery-item"><img src="standard-schnauzer-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Standard Schnauzer</p></div>
+        <div class="gallery-item"><img src="sleeping-curled-whippet-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Sleeping Whippet</p></div>
+        <div class="gallery-item"><img src="black-cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>Black Cocker Spaniel</p></div>
+        <div class="gallery-item"><img src="two-horses-pet-portrait-acrylic-painting-sophie-maynard.jpg"><p>The Pair</p></div>
+    </div>
+</section>
+
+<section id="commissions" style="background-color: #f9f7f5; max-width: 100%;">
+    <div style="max-width: 1000px; margin: auto;">
+        <h2>Commission Guide</h2>
+        <p>Commissioning a piece is a collaborative journey. We begin with a consultation to discuss your vision and references, followed by a composition sketch, and finally the painting itself.</p>
+        <p><strong>Pricing:</strong> Portraits start from £350. Please get in touch for a bespoke quote.</p>
+    </div>
 </section>
 
 <section id="testimonials">
     <h2>Testimonials</h2>
-    <blockquote>"I honestly cried when I unwrapped it. Sophie captured the exact look in Gus's eyes. It isn’t just a painting; it’s him. It’s the most precious thing I own." - Lottie Anderson</blockquote>
+    <div class="testimonial-grid">
+        <div class="testimonial-item">
+            "The painting of Gus perfectly captures his playful spirit. We couldn't be happier with the result."
+            <span>— Sarah & James, London</span>
+        </div>
+        <div class="testimonial-item">
+            "Sophie was a joy to work with from start to finish. A truly professional and talented artist."
+            <span>— Mark, Cotswolds</span>
+        </div>
+    </div>
 </section>
 
 <section id="contact">
-    <h2>Get in Touch</h2>
-    <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="_replyto" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+    <h2>Contact</h2>
+    <p>For enquiries, commissions, or just to say hello, please reach out via email or the form below.</p>
+    </section>
 
-    <div id="lightbox" onclick="this.style.display='none'">
-    <img id="lightbox-img" src="" alt="Enlarged view">
-    <p style="color: white; margin-top: 10px;">Click anywhere to close</p>
+<div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="">
 </div>
 
 <script>
-    // This script tells the browser: "When an image is clicked, show the popup"
+    // Lightbox Logic
     document.querySelectorAll('.gallery-item img').forEach(image => {
         image.onclick = () => {
             document.getElementById('lightbox').style.display = 'flex';
@@ -234,6 +135,6 @@ section {
         }
     });
 </script>
-    
+
 </body>
 </html>
