@@ -19,10 +19,16 @@
 
         /* 2. NAVIGATION */
         nav { 
-            position: sticky; top: 0; background: rgba(249, 248, 244, 0.98); 
-            padding: 20px; display: flex; justify-content: center; gap: 40px; 
-            border-bottom: 1px solid rgba(197, 160, 89, 0.1); z-index: 1000; 
-        }
+    position: sticky; 
+    top: 0; 
+    background: rgba(249, 248, 244, 0.98); 
+    padding: 15px 25px; 
+    display: flex; 
+    justify-content: space-between; /* This pushes logo left and menu right */
+    align-items: center;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1); 
+    z-index: 1000; 
+}
         nav a { 
             text-decoration: none; color: #2D2926; font-size: 0.75rem; 
             text-transform: uppercase; letter-spacing: 2.5px; transition: 0.4s;
@@ -218,7 +224,6 @@ footer {
 <body>
 
 <nav>
-    <nav>
     <div class="logo">Sophie Maynard</div>
     
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -228,9 +233,11 @@ footer {
     </button>
 
     <ul id="nav-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">The Artist</a></li>
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#commissions">Commissions</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
