@@ -59,10 +59,9 @@
             align-items: center;
             color: white;
             text-align: center;
-            padding-top: 140px; /* Lowered the text */
+            padding-top: 140px; 
         }
 
-        /* Deeper/Darker Top Gradient */
         .hero::before {
             content: '';
             position: absolute;
@@ -86,11 +85,25 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 5. ARTIST & PHILOSOPHY LAYOUTS */
-        .artist-container, .philosophy-container { display: flex; align-items: center; gap: 60px; text-align: left; }
-        .artist-image, .philosophy-image { flex: 1; }
-        .artist-image img, .philosophy-image img { width: 100%; height: auto; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); }
+        /* 5. ARTIST & PHILOSOPHY ALIGNMENT */
+        .artist-container, .philosophy-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 60px; 
+            text-align: left; 
+            max-width: 1000px; 
+            margin: 0 auto;
+        }
+        .artist-image, .philosophy-image { flex: 1; line-height: 0; }
+        .artist-image img, .philosophy-image img { 
+            width: 100%; 
+            max-height: 500px; 
+            object-fit: cover; 
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.05); 
+        }
         .artist-bio, .philosophy-text { flex: 1.2; }
+        .artist-bio h2, .philosophy-text h2 { text-align: left; margin-bottom: 30px; }
+        .artist-bio h2::after, .philosophy-text h2::after { margin: 20px 0 0 0; }
 
         /* 6. PORTFOLIO */
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
@@ -118,6 +131,8 @@
             .hero h1 { font-size: 2.8rem; }
             .artist-container, .philosophy-container { flex-direction: column; text-align: center; }
             .philosophy-container { flex-direction: column-reverse; }
+            .artist-bio h2, .philosophy-text h2 { text-align: center; }
+            .artist-bio h2::after, .philosophy-text h2::after { margin: 20px auto 0; }
         }
     </style>
 </head>
@@ -182,8 +197,10 @@
 </section>
 
 <section id="commissions" class="reveal" style="background-color: #F3F1ED; max-width: 100%;">
-    <h2>Commission Guide</h2>
-    <p>Commissioning a piece is a collaborative journey. We begin with a consultation to discuss your vision, followed by a composition sketch, and finally the painting itself.</p>
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h2>Commission Guide</h2>
+        <p>Commissioning a piece is a collaborative journey. We begin with a consultation to discuss your vision, followed by a composition sketch, and finally the painting itself.</p>
+    </div>
 </section>
 
 <section id="testimonials" class="reveal">
@@ -194,7 +211,6 @@
 
 <section id="contact" class="reveal">
     <h2>Studio Enquiry</h2>
-    <p>I am delighted to have opened a selection of commission slots, though availability remains limited to ensure every piece receives the time and detail it deserves. Please get in touch using the form below to share your vision and begin the process.</p>
     <div class="contact-container">
         <form id="my-form">
             <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
