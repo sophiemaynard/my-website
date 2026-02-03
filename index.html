@@ -17,10 +17,11 @@
             color: #2D2926; background-color: #F9F8F4; 
         }
 
-        /* 2. CUSTOM GOLD ARROW CURSOR (Desktop Only) */
+        /* 2. CUSTOM GOLD ARROW CURSOR */
         @media (min-width: 992px) {
             body { cursor: none; }
-            a, button, .gallery-item, .nav-btn { cursor: none; }
+            /* Force removal of the 'hand' icon on all buttons/links */
+            a, button, .gallery-item, .nav-btn, input, textarea { cursor: none !important; }
         }
         
         .cursor {
@@ -28,7 +29,7 @@
             color: #C5A059; font-size: 1.2rem;
             display: flex; align-items: center; justify-content: center;
             transition: transform 0.1s ease-out;
-            transform: translate(-50%, -50%); /* Centers the icon on mouse */
+            transform: translate(-50%, -50%);
         }
 
         /* 3. NAVIGATION */
@@ -48,9 +49,10 @@
             height: 75vh; 
             background: linear-gradient(rgba(45, 41, 38, 0.2), rgba(45, 41, 38, 0.2)), 
                         url('cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg') no-repeat center center;
-            background-size: cover; display: flex; justify-content: center; align-items: center; color: white;
+            background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400; margin-bottom: 10px; }
+        .hero p { font-size: 1rem; max-width: 600px; letter-spacing: 1px; font-weight: 300; padding: 0 20px; }
 
         /* 5. CONTENT SECTIONS & REVEAL ANIMATION */
         section { padding: 120px 20px; max-width: 1100px; margin: auto; text-align: center; }
@@ -86,24 +88,29 @@
         .social-links a:hover { color: #2D2926; }
         .footer-text p { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: #555; margin: 5px; }
 
-        /* 9. LIGHTBOX WITH NAVIGATION */
+        /* 9. LIGHTBOX - REFINED ARROWS & NO BORDER */
         #lightbox { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; 
+            background: rgba(0,0,0,0.97); z-index: 2000; justify-content: center; align-items: center; 
         }
-        #lightbox img { max-width: 85%; max-height: 80%; border: 2px solid #C5A059; }
+        #lightbox img { 
+            max-width: 90%; max-height: 85%; border: none; /* Border Removed */
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); 
+        }
         
         .nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
-            background: none; border: none; color: #C5A059; font-size: 3rem;
-            padding: 20px; cursor: pointer; transition: 0.3s; z-index: 2100;
+            background: none; border: none; color: #C5A059; font-size: 2.2rem; /* Slimmer font size */
+            font-weight: 100; padding: 40px; transition: 0.3s; z-index: 2100;
+            opacity: 0.6;
         }
-        .nav-btn:hover { color: white; scale: 1.1; }
-        #prev-btn { left: 20px; }
-        #next-btn { right: 20px; }
-        #close-btn { position: absolute; top: 30px; right: 30px; font-size: 2rem; }
+        .nav-btn:hover { color: white; opacity: 1; }
+        #prev-btn { left: 10px; }
+        #next-btn { right: 10px; }
+        #close-btn { position: absolute; top: 30px; right: 30px; font-size: 1.5rem; opacity: 0.4; }
+        #close-btn:hover { opacity: 1; }
 
-        /* ARTIST SECTION - CLEANED */
+        /* ARTIST SECTION */
         .artist-container { display: flex; align-items: center; gap: 60px; text-align: left; max-width: 1000px; margin: 0 auto; }
         .artist-image { flex: 1; line-height: 0; }
         .artist-image img { width: 100%; height: auto; border: none; padding: 0; background: transparent; }
@@ -124,7 +131,7 @@
             .philosophy-container { flex-direction: column-reverse; }
             .artist-bio h2, .philosophy-text h2 { text-align: center; }
             .artist-bio h2::after, .philosophy-text h2::after { margin: 20px auto 0; }
-            .nav-btn { font-size: 2rem; padding: 10px; }
+            .nav-btn { font-size: 2rem; padding: 15px; }
         }
     </style>
 </head>
@@ -145,6 +152,7 @@
 
 <header class="hero">
     <h1>Sophie Maynard</h1>
+    <p>Hand-crafted portraits and bespoke artwork tailored for the sanctuary of the home and the professional space</p>
 </header>
 
 <section id="about" class="reveal">
@@ -154,8 +162,8 @@
         </div>
         <div class="artist-bio">
             <h2>The Artist</h2>
-            <p>From my studio in Berkhamsted, I create works that serve as the emotional and aesthetic anchor of a room. My work is shaped by a life spent outdoors and the quiet inspiration I find in my whippet, Trudy, and my horse, Geenie. A portrait should capture more than a physical likeness; it should reflect the character of a companion. I specialise in pet portraiture that honors the unique bond you share with your animals. My goal is to create a meaningful tribute that feels as alive as the subject itself.
-            <p>I also create site-specific artwork designed to suit the atmosphere of a room. Whether it is a personal residence or a professional environment, I believe art should be the focal point that brings a space together. I work with you to ensure the scale and style of the piece are perfectly balanced with its surroundings.
+            <p>From my studio in Berkhamsted, I create works that serve as the emotional and aesthetic anchor of a room. My work is shaped by a life spent outdoors and the quiet inspiration I find in my whippet, Trudy, and my horse, Geenie. A portrait should capture more than a physical likeness; it should reflect the character of a companion. I specialise in pet portraiture that honors the unique bond you share with your animals. My goal is to create a meaningful tribute that feels as alive as the subject itself.</p>
+            <p>I also create site-specific artwork designed to suit the atmosphere of a room. Whether it is a personal residence or a professional environment, I believe art should be the focal point that brings a space together. I work with you to ensure the scale and style of the piece are perfectly balanced with its surroundings.</p>
             <p>To ensure each project receives the focus it requires, I accept only a select number of commissions each year. This allows me to maintain a high standard of craftsmanship and work closely with every patron from the first sketch to the final piece.</p>    
         </div>
     </div>
