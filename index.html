@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* 1. GENERAL STYLE & CUSTOM CURSOR BASE */
+        /* 1. LUXURY COLOR PALETTE & GENERAL */
         html { scroll-behavior: smooth; }
         body { 
             font-family: 'Montserrat', sans-serif; 
             line-height: 1.8; margin: 0; 
-            color: #2D2926; background-color: #F9F8F4;
-            cursor: none; /* Hide default cursor */
+            color: #2D2926; background-color: #F9F8F4; 
+            cursor: none; /* Hides system cursor to use the custom dot */
         }
 
-        /* The Minimalist Dot Cursor */
+        /* 2. SLEEK MINIMALIST DOT CURSOR */
         #custom-cursor {
             width: 8px;
             height: 8px;
@@ -27,23 +27,22 @@
             position: fixed;
             pointer-events: none;
             z-index: 10000;
-            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+            transition: transform 0.15s ease-out;
             transform: translate(-50%, -50%);
         }
 
-        /* When hovering over clickable items, the dot grows slightly */
+        /* Hover State: The dot expands slightly and becomes semi-transparent */
         .cursor-hover #custom-cursor {
-            transform: translate(-50%, -50%) scale(2.5);
-            background-color: rgba(197, 160, 89, 0.5);
+            transform: translate(-50%, -50%) scale(3);
+            background-color: rgba(197, 160, 89, 0.4);
         }
 
-        /* Hide custom cursor on mobile */
         @media (max-width: 991px) {
             #custom-cursor { display: none; }
             body { cursor: auto; }
         }
 
-        /* 2. NAVIGATION */
+        /* 3. NAVIGATION */
         nav { 
             position: sticky; top: 0; background: rgba(249, 248, 244, 0.98); 
             padding: 20px; display: flex; justify-content: center; gap: 40px; 
@@ -56,7 +55,7 @@
         }
         nav a:hover { color: #C5A059; }
 
-        /* 3. HERO SECTION */
+        /* 4. HERO SECTION */
         .hero { 
             height: 75vh; 
             background: linear-gradient(rgba(45, 41, 38, 0.2), rgba(45, 41, 38, 0.2)), 
@@ -65,7 +64,7 @@
         }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400; margin-bottom: 10px; }
 
-        /* 4. CONTENT SECTIONS & REVEAL */
+        /* 5. CONTENT SECTIONS & REVEAL ANIMATION */
         section { padding: 120px 20px; max-width: 1100px; margin: auto; text-align: center; }
         h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 50px; font-weight: 400; }
         h2::after { content: ''; display: block; width: 40px; height: 1px; background: #C5A059; margin: 20px auto 0; }
@@ -73,17 +72,28 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 5. ARTIST SECTION */
+        /* 6. ARTIST SECTION */
         .artist-container { display: flex; align-items: center; gap: 60px; text-align: left; max-width: 1000px; margin: 0 auto; }
+        .artist-image { flex: 1; line-height: 0; }
         .artist-image img { width: 100%; height: auto; border: none; }
         .artist-bio { flex: 1.2; }
+        .artist-bio h2 { text-align: left; margin-bottom: 30px; }
+        .artist-bio h2::after { margin: 20px 0 0 0; }
 
-        /* 6. PORTFOLIO GALLERY */
+        /* 7. PHILOSOPHY SECTION */
+        .philosophy-container { display: flex; align-items: center; gap: 80px; text-align: left; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .philosophy-text { flex: 1.2; }
+        .philosophy-text h2 { text-align: left; }
+        .philosophy-text h2::after { margin: 20px 0 0 0; }
+        .philosophy-image { flex: 1; line-height: 0; }
+        .philosophy-image img { width: 100%; height: auto; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); }
+
+        /* 8. PORTFOLIO */
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
         .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.6s; cursor: none; }
         .gallery-item:hover img { opacity: 0.8; }
 
-        /* 7. LIGHTBOX - MINIMALIST WHITE CONTROLS */
+        /* 9. LIGHTBOX - NO BORDER & MINIMAL ARROWS */
         #lightbox { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.98); z-index: 2000; justify-content: center; align-items: center; 
@@ -101,32 +111,46 @@
         #next-btn { right: 10px; }
         #close-btn { position: absolute; top: 30px; right: 30px; font-size: 1.2rem; opacity: 0.3; }
 
-        /* 8. REFINED BUTTON - NO ENLARGING */
+        /* 10. CONTACT FORM & REFINED BUTTON */
+        .contact-container { max-width: 700px; margin: 0 auto; background: #FFF; padding: 60px; box-shadow: 0 20px 40px rgba(45, 41, 38, 0.05); }
+        .form-group { margin-bottom: 40px; text-align: left; }
+        input, textarea { 
+            width: 100%; border: none; border-bottom: 1px solid #D1D1D1; padding: 15px 0; 
+            background: transparent; font-family: 'Montserrat', sans-serif; font-size: 1rem; cursor: none;
+        }
+        input:focus, textarea:focus { border-bottom: 1px solid #C5A059; outline: none; }
+
         .submit-btn { 
-            background-color: #C5A059; /* Light Gold */
+            background-color: #C5A059; /* Muted Gold */
             color: #F9F8F4; 
             padding: 20px 60px; 
             border: none;
             text-transform: uppercase; 
             letter-spacing: 3px; 
             cursor: none; 
-            transition: background-color 0.5s ease;
+            transition: background-color 0.4s ease;
             width: 100%;
         }
         .submit-btn:hover { 
-            background-color: #8C6F3D; /* Dark Gold */
+            background-color: #A37E3C; /* Deeper Gold */
         }
 
-        /* 9. BACK TO TOP */
+        /* 11. FOOTER & BACK TO TOP */
+        footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.1); text-align: center; }
+        .social-links a { color: #C5A059; font-size: 1.8rem; text-decoration: none; transition: 0.3s; cursor: none;}
+        
         #backToTop {
             display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99;
-            border: 1px solid rgba(197, 160, 89, 0.3); background: rgba(255,255,255,0.8);
+            border: 1px solid rgba(197, 160, 89, 0.2); background: rgba(255,255,255,0.8);
             color: #C5A059; width: 40px; height: 40px; border-radius: 50%;
             cursor: none; font-size: 0.7rem; transition: 0.3s;
         }
 
         @media (max-width: 768px) {
-            .artist-container { flex-direction: column; text-align: center; }
+            .artist-container, .philosophy-container { flex-direction: column; text-align: center; }
+            .philosophy-container { flex-direction: column-reverse; }
+            .artist-bio h2, .philosophy-text h2 { text-align: center; }
+            .artist-bio h2::after, .philosophy-text h2::after { margin: 20px auto 0; }
         }
     </style>
 </head>
@@ -150,11 +174,25 @@
 <section id="about" class="reveal">
     <div class="artist-container">
         <div class="artist-image">
-            <img src="sophie-maynard-whippet.jpg" alt="Sophie Maynard">
+            <img src="sophie-maynard-whippet.jpg" alt="Sophie Maynard - Fine Artist">
         </div>
         <div class="artist-bio">
             <h2>The Artist</h2>
-            <p>From my studio in Berkhamsted, I create works that serve as the emotional and aesthetic anchor of a room. My work is shaped by a life spent outdoors and the quiet inspiration I find in my whippet, Trudy, and my horse, Geenie.</p>
+            <p>From my studio in Berkhamsted, I create works that serve as the emotional and aesthetic anchor of a room. My work is shaped by a life spent outdoors and the quiet inspiration I find in my whippet, Trudy, and my horse, Geenie. A portrait should capture more than a physical likeness; it should reflect the character of a companion. I specialise in pet portraiture that honors the unique bond you share with your animals. My goal is to create a meaningful tribute that feels as alive as the subject itself.</p>
+            <p>I also create site-specific artwork designed to suit the atmosphere of a room. Whether it is a personal residence or a professional environment, I believe art should be the focal point that brings a space together.</p>
+            <p>To ensure each project receives the focus it requires, I accept only a select number of commissions each year. This allows me to maintain a high standard of craftsmanship and work closely with every patron from the first sketch to the final piece.</p>    
+        </div>
+    </div>
+</section>
+    
+<section id="philosophy" class="reveal" style="background-color: #F3F1ED; max-width: 100%;">
+    <div class="philosophy-container">
+        <div class="philosophy-text">
+            <h2>The Philosophy</h2>
+            <p>I view every commission as a site-specific dialogue. A work of art must resonate with the architecture and atmosphere it inhabits. By considering light, scale, and the intended energy of a room, from the sanctuary of a home to the identity of a professional space, I ensure that each piece becomes a seamless, intentional extension of the interior.</p>
+        </div>
+        <div class="philosophy-image">
+            <img src="pink-seascape-acrylic-painting-abstract-bondi-beach-bondi-rise.jpg" alt="Artistic Detail">
         </div>
     </div>
 </section>
@@ -166,18 +204,50 @@
         <div class="gallery-item"><img src="cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
         <div class="gallery-item"><img src="black-white-whippet-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
         <div class="gallery-item"><img src="black-white-whippet-greyhound-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="show-cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="chestnut-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="bay-pony-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="colourful-bay-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="grey-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="dark-bay-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="standard-schnauzer-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="sleeping-curled-whippet-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="black-cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="two-horses-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
     </div>
+</section>
+
+<section id="commissions" class="reveal" style="background-color: #F3F1ED; max-width: 100%;">
+    <div style="max-width: 1000px; margin: auto;">
+        <h2>Commission Guide</h2>
+        <p>Commissioning a piece is a collaborative journey. We begin with a consultation to discuss your vision, followed by a composition sketch, and finally the painting itself.</p>
+    </div>
+</section>
+
+<section id="testimonials" class="reveal">
+    <h2>Testimonials</h2>
+    <p style="font-style: italic;">"The painting of Buster perfectly captures his playful spirit. A truly professional and talented artist."</p>
+    <p>— Sarah & James, London</p>
 </section>
 
 <section id="contact" class="reveal">
     <h2>Studio Enquiry</h2>
-    <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
-        <input type="text" name="name" placeholder="Your Name" required style="width: 100%; border: none; border-bottom: 1px solid #D1D1D1; padding: 15px 0; margin-bottom: 20px; background: transparent;">
-        <button id="my-form-button" type="submit" class="submit-btn">Send Enquiry</button>
-        <p id="my-form-status" style="margin-top: 25px;"></p>
-    </form>
+    <div class="contact-container">
+        <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
+            <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+            <div class="form-group"><input type="email" name="email" placeholder="Your Email Address" required></div>
+            <div class="form-group"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
+            <button id="my-form-button" type="submit" class="submit-btn">Send Enquiry</button>
+            <p id="my-form-status" style="margin-top: 25px;"></p>
+        </form>
+    </div>
 </section>
+
+<footer>
+    <div class="social-links"><a href="https://instagram.com/sophiemaynardart" target="_blank"><i class="fab fa-instagram"></i></a></div>
+    <div class="footer-text"><p>&copy; 2026 Sophie Maynard | Bespoke Artwork</p></div>
+</footer>
 
 <div id="lightbox">
     <button id="close-btn" class="nav-btn"><i class="fas fa-times"></i></button>
@@ -189,30 +259,29 @@
 <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-    // 1. MINIMAL DOT CURSOR LOGIC
+    // 1. CUSTOM CURSOR LOGIC
     const cursor = document.getElementById('custom-cursor');
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
 
-    // Add hover effect to all links, buttons, and gallery items
     const clickables = document.querySelectorAll('a, button, .gallery-item img, input, textarea');
     clickables.forEach(item => {
         item.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
         item.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
 
-    // 2. REVEAL LOGIC
+    // 2. REVEAL & BACK TO TOP LOGIC
     function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
-        reveals.forEach(r => {
-            var windowHeight = window.innerHeight;
-            var elementTop = r.getBoundingClientRect().top;
-            if (elementTop < windowHeight - 150) r.classList.add("active");
+        document.querySelectorAll(".reveal").forEach(r => {
+            if (r.getBoundingClientRect().top < window.innerHeight - 150) r.classList.add("active");
         });
+        const btt = document.getElementById("backToTop");
+        if (window.scrollY > 800) btt.style.display = "block"; else btt.style.display = "none";
     }
     window.addEventListener("scroll", reveal);
+    document.getElementById("backToTop").onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
     reveal();
 
     // 3. LIGHTBOX LOGIC
@@ -222,38 +291,16 @@
     let currentIndex = 0;
 
     images.forEach((img, index) => {
-        img.onclick = () => {
-            currentIndex = index;
-            lightboxImg.src = images[currentIndex].src;
-            lightbox.style.display = 'flex';
-        }
+        img.onclick = () => { currentIndex = index; updateLightbox(); lightbox.style.display = 'flex'; }
     });
 
-    document.getElementById('next-btn').onclick = (e) => {
-        e.stopPropagation();
-        currentIndex = (currentIndex + 1) % images.length;
-        lightboxImg.src = images[currentIndex].src;
-    };
-
-    document.getElementById('prev-btn').onclick = (e) => {
-        e.stopPropagation();
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        lightboxImg.src = images[currentIndex].src;
-    };
-
+    function updateLightbox() { lightboxImg.src = images[currentIndex].src; }
+    document.getElementById('next-btn').onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % images.length; updateLightbox(); };
+    document.getElementById('prev-btn').onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + images.length) % images.length; updateLightbox(); };
     document.getElementById('close-btn').onclick = () => lightbox.style.display = 'none';
     lightbox.onclick = () => lightbox.style.display = 'none';
 
-    // 4. BACK TO TOP
-    const btt = document.getElementById("backToTop");
-    window.onscroll = () => {
-        if (window.scrollY > 800) btt.style.display = "block";
-        else btt.style.display = "none";
-        reveal();
-    };
-    btt.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
-
-    // 5. FORM SUBMISSION
+    // 4. FORM SUBMISSION
     const form = document.getElementById('my-form');
     const status = document.getElementById('my-form-status');
     form.addEventListener('submit', (e) => {
@@ -266,7 +313,7 @@
         }).then(res => {
             if (res.status == 200) {
                 form.style.display = "none";
-                status.innerHTML = "Thank you. I will be in touch shortly.";
+                status.innerHTML = `<div style="padding:40px; text-align:center;"><h3 style="font-family:'Playfair Display';">Thank You</h3><p>Your enquiry has been received. I will be in touch within 2-3 business days.</p></div>`;
             }
         });
     });
