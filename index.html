@@ -4,232 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sophie Maynard | Bespoke Artwork</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-       /* LUXURY 2026 COLOR PALETTE: 
-   Alabaster: #F9F8F4 | Deep Charcoal: #2D2926 | Muted Gold: #C5A059 */
-
-html { scroll-behavior: smooth; }
-
-body { 
-    font-family: 'Montserrat', sans-serif; 
-    line-height: 1.8; 
-    margin: 0; 
-    color: #2D2926; 
-    background-color: #F9F8F4; /* Warm, expensive feel */
-}
-
-h1, h2, h3 { 
-    font-family: 'Playfair Display', serif; 
-    font-weight: 400; 
-    letter-spacing: 1px;
-}
-
-/* NAVIGATION */
-nav { 
-    position: sticky; top: 0; 
-    background: rgba(249, 248, 244, 0.98); 
-    padding: 20px; 
-    display: flex; justify-content: center; gap: 40px; 
-    border-bottom: 1px solid rgba(197, 160, 89, 0.2); 
-    z-index: 1000; 
-}
-
-nav a { 
-    text-decoration: none; color: #2D2926; 
-    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2.5px; 
-    transition: 0.4s;
-}
-
-nav a:hover { 
-    color: #C5A059; /* Changes to gold on hover */
-}
-
-/* HERO */
-.hero { 
-    height: 75vh; 
-    background: linear-gradient(rgba(45, 41, 38, 0.2), rgba(45, 41, 38, 0.2)), 
-                url('cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg') no-repeat center center;
-    background-size: cover;
-    display: flex; justify-content: center; align-items: center; color: white;
-}
-
-.hero h1 { font-size: 4rem; text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-
-/* SECTIONS */
-section { padding: 120px 20px; max-width: 1100px; margin: auto; text-align: center; }
-
-h2 { 
-    font-size: 2.8rem; margin-bottom: 50px; 
-    position: relative; display: inline-block;
-}
-
-/* Decorative Gold Line under headings */
-h2::after {
-    content: ''; display: block; width: 40px; height: 1px; 
-    background: #C5A059; margin: 20px auto 0;
-}
-
-/* PORTFOLIO */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-.gallery-item img { 
-    width: 100%; aspect-ratio: 1/1; object-fit: cover; 
-    filter: grayscale(10%) contrast(105%); transition: 0.6s; 
-}
-.gallery-item:hover img { filter: grayscale(0%) contrast(100%); opacity: 0.85; }
-
-/* REFINED LUXURY CONTACT FORM */
-.contact-container { 
-    max-width: 700px;
-    margin: 0 auto;
-    background: #FFF; 
-    padding: 60px; 
-    /* A very soft shadow that looks like the paper is lifting slightly */
-    box-shadow: 0 20px 40px rgba(45, 41, 38, 0.05);
-    border: 1px solid rgba(197, 160, 89, 0.1); 
-}
-
-.form-group {
-    margin-bottom: 40px; /* More breathing room */
-    text-align: left;
-}
-
-/* Floating-style inputs (Underline only) */
-input, textarea { 
-    width: 100%;
-    border: none; 
-    border-bottom: 1px solid #D1D1D1; 
-    padding: 15px 0; 
-    background: transparent; 
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    color: #2D2926;
-    border-radius: 0;
-    transition: border-color 0.4s ease;
-}
-
-/* Gold accent when you click to type */
-input:focus, textarea:focus { 
-    border-bottom: 1px solid #C5A059; 
-    outline: none; 
-}
-
-/* Styling the placeholder text to be lighter and elegant */
-::placeholder {
-    color: #A0A0A0;
-    font-style: italic;
-    font-weight: 300;
-}
-
-.submit-btn { 
-    margin-top: 20px;
-    background-color: #2D2926; 
-    color: #F9F8F4; 
-    padding: 20px 60px; 
-    border: 1px solid #2D2926; 
-    text-transform: uppercase; 
-    letter-spacing: 3px; 
-    font-size: 0.8rem;
-    cursor: pointer; 
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.submit-btn:hover { 
-    background-color: #C5A059; 
-    border-color: #C5A059;
-    color: #FFF;
-    letter-spacing: 5px;
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-input, textarea { 
-    border: none; border-bottom: 1px solid #D1D1D1; padding: 15px 0; 
-    background: transparent; margin-bottom: 30px; border-radius: 0;
-}
-
-input:focus, textarea:focus { border-bottom: 1px solid #C5A059; outline: none; }
-
-.submit-btn { 
-    background-color: #2D2926; color: #F9F8F4; 
-    padding: 18px 50px; border: 1px solid #2D2926; 
-    text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;
-    cursor: pointer; transition: all 0.4s ease;
-}
-
-/* The requested Hover Effect */
-.submit-btn:hover { 
-    background-color: #C5A059; /* Turns Gold */
-    border-color: #C5A059;
-    color: #FFF;
-    letter-spacing: 4px; /* Subtle "expanding" feel */
-}
-
-/* FOOTER */
-footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); text-align: center; }
-.social-links a { color: #C5A059; font-size: 1.5rem; transition: 0.3s; }
-.social-links a:hover { color: #2D2926; }
-
-/* 10. FADE-IN ANIMATION */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px); /* Starts 30px lower */
-    transition: all 1.2s ease-out; /* Slow, elegant transition */
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0); /* Glides up to its natural position */
-}
-    /* 11. CUSTOM LUXURY CURSOR */
-/* Hide the default cursor on desktop */
-@media (min-width: 992px) {
-    body { cursor: none; }
-    a, button, .gallery-item { cursor: none; }
-}
-
-.cursor {
-    width: 8px;
-    height: 8px;
-    background-color: #C5A059;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-}
-
-.cursor-follower {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #C5A059;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    /* This creates that elegant 'lagging' follow effect */
-    transition: transform 0.15s ease-out, opacity 0.3s ease;
-    transform: translate(-50%, -50%);
-}
-
-/* Effect when hovering over links/buttons */
-.cursor-grow {
-    transform: scale(1.5);
-    background-color: rgba(197, 160, 89, 0.1);
-    border: none;
-}
-    </style>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* 1. LUXURY COLOR PALETTE & GENERAL */
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            line-height: 1.8; margin: 0; 
+            color: #2D2926; background-color: #F9F8F4; 
+        }
+
+        /* 2. CUSTOM CURSOR (Desktop Only) */
+        @media (min-width: 992px) {
+            body { cursor: none; }
+            a, button, .gallery-item { cursor: none; }
+        }
+        .cursor {
+            width: 8px; height: 8px; background-color: #C5A059;
+            border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999;
+        }
+        .cursor-follower {
+            width: 40px; height: 40px; border: 1px solid #C5A059;
+            border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998;
+            transition: transform 0.15s ease-out, opacity 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+        .cursor-grow { transform: translate(-50%, -50%) scale(1.5); background-color: rgba(197, 160, 89, 0.1); border: none; }
+
+        /* 3. NAVIGATION */
+        nav { 
+            position: sticky; top: 0; background: rgba(249, 248, 244, 0.98); 
+            padding: 20px; display: flex; justify-content: center; gap: 40px; 
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1); z-index: 1000; 
+        }
+        nav a { 
+            text-decoration: none; color: #2D2926; font-size: 0.75rem; 
+            text-transform: uppercase; letter-spacing: 2.5px; transition: 0.4s;
+        }
+        nav a:hover { color: #C5A059; }
+
+        /* 4. HERO SECTION */
+        .hero { 
+            height: 75vh; 
+            background: linear-gradient(rgba(45, 41, 38, 0.2), rgba(45, 41, 38, 0.2)), 
+                        url('cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg') no-repeat center center;
+            background-size: cover; display: flex; justify-content: center; align-items: center; color: white;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400; }
+
+        /* 5. CONTENT SECTIONS & REVEAL ANIMATION */
+        section { padding: 120px 20px; max-width: 1100px; margin: auto; text-align: center; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 50px; font-weight: 400; }
+        h2::after { content: ''; display: block; width: 40px; height: 1px; background: #C5A059; margin: 20px auto 0; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* 6. PORTFOLIO */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.6s; }
+        .gallery-item:hover img { opacity: 0.8; }
+
+        /* 7. CONTACT FORM */
+        .contact-container { max-width: 700px; margin: 0 auto; background: #FFF; padding: 60px; box-shadow: 0 20px 40px rgba(45, 41, 38, 0.05); }
+        .form-group { margin-bottom: 40px; text-align: left; }
+        input, textarea { 
+            width: 100%; border: none; border-bottom: 1px solid #D1D1D1; padding: 15px 0; 
+            background: transparent; font-family: 'Montserrat', sans-serif; font-size: 1rem;
+        }
+        input:focus, textarea:focus { border-bottom: 1px solid #C5A059; outline: none; }
+        .submit-btn { 
+            background-color: #2D2926; color: #F9F8F4; padding: 20px 60px; border: none;
+            text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: 0.5s ease;
+        }
+        .submit-btn:hover { background-color: #C5A059; letter-spacing: 5px; }
+
+        /* 8. FOOTER */
+        footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.1); text-align: center; }
+        .social-links { margin-bottom: 25px; }
+        .social-links a { color: #C5A059; font-size: 1.8rem; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { color: #2D2926; }
+        .footer-text p { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: #555; margin: 5px; }
+
+        /* 9. LIGHTBOX */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
+        #lightbox img { max-width: 90%; max-height: 85%; border: 4px solid white; }
+    </style>
 </head>
 <body>
+
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
+
 <nav>
     <a href="#about">The Artist</a>
     <a href="#philosophy">Philosophy</a>
     <a href="#portfolio">Portfolio</a>
-    <a href="#commissions">Commission Guide</a>
+    <a href="#commissions">Commissions</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
 </nav>
@@ -240,13 +114,13 @@ footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); text
 
 <section id="about" class="reveal">
     <h2>The Artist</h2>
-    <p>Based in Berkhamsted, I am a fine artist specialising in contemporary portraiture. My work seeks to find the balance between technical precision and the raw, emotional character of my subjects.</p>
+    <p>Based in the UK, I am a fine artist specializing in contemporary pet portraiture. My work seeks to find the balance between technical precision and raw, emotional character.</p>
 </section>
 
 <section id="philosophy" class="reveal" style="background-color: #F3F1ED; max-width: 100%;">
     <div style="max-width: 1000px; margin: auto;">
         <h2>The Philosophy</h2>
-        <p>I believe that every painting is a conversation. Whether it is a pet portrait or a landscape, my goal is to distill the essence of the subject—capturing not just a likeness, but a moment in time that feels permanent and tactile.</p>
+        <p>I believe every painting is a conversation. My goal is to distill the essence of the subject—capturing not just a likeness, but a moment in time that feels permanent and tactile.</p>
     </div>
 </section>
 
@@ -262,7 +136,7 @@ footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); text
         <div class="gallery-item"><img src="bay-pony-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
         <div class="gallery-item"><img src="colourful-bay-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
         <div class="gallery-item"><img src="grey-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
-        <div class="gallery-item"><img src="dark-bay-horse-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
+        <div class="gallery-item"><img src="dark-bay-horset-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
         <div class="gallery-item"><img src="standard-schnauzer-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
         <div class="gallery-item"><img src="sleeping-curled-whippet-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
         <div class="gallery-item"><img src="black-cocker-spaniel-pet-portrait-acrylic-painting-sophie-maynard.jpg"></div>
@@ -273,141 +147,104 @@ footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); text
 <section id="commissions" class="reveal" style="background-color: #F3F1ED; max-width: 100%;">
     <div style="max-width: 1000px; margin: auto;">
         <h2>Commission Guide</h2>
-        <p>Commissioning a piece is a collaborative journey. We begin with a consultation to discuss your vision and references, followed by a composition sketch, and finally the painting itself.</p>
-        <p><strong>Pricing:</strong> Portraits start from £350. Please get in touch for a bespoke quote.</p>
+        <p>Commissioning a piece is a collaborative journey. We begin with a consultation to discuss your vision, followed by a composition sketch, and finally the painting itself.</p>
     </div>
 </section>
 
 <section id="testimonials" class="reveal">
     <h2>Testimonials</h2>
-    <div class="testimonial-grid">
-        <div class="testimonial-item">
-            "The painting of Gus perfectly captures his playful spirit. We couldn't be happier with the result."
-            <span>— Sarah & James, London</span>
-        </div>
-        <div class="testimonial-item">
-            "Sophie was a joy to work with from start to finish. A truly professional and talented artist."
-            <span>— Mark, Cotswolds</span>
-        </div>
-    </div>
+    <p style="font-style: italic;">"The painting of Buster perfectly captures his playful spirit. A truly professional and talented artist."</p>
+    <p>— Sarah & James, London</p>
 </section>
 
 <section id="contact" class="reveal">
-    <h2>Studio Enquiries</h2>
-    <p>I am pleased to open my studio for a select number of new commissions. As each piece is uniquely tailored and hand-crafted, availability is limited, so please get in touch to discuss your artwork requirements.</p>
-    
+    <h2>Studio Enquiry</h2>
+    <p>I am delighted to announce that a limited number of commission slots are currently available. Please get in touch to discuss your artwork requirements</p>
     <div class="contact-container">
-    <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
-
-        <div class="form-group">
-            <input type="text" name="name" placeholder="Full Name" required>
-        </div>
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Email Address" required>
-        </div>
-        <div class="form-group">
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        </div>
-
-        <button id="my-form-button" type="submit" class="submit-btn">Send Enquiry</button>
-        <p id="my-form-status" style="margin-top: 25px; font-weight: 400; font-family: 'Playfair Display', serif;"></p>
-    </form>
-</div>
+        <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email Address" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button id="my-form-button" type="submit" class="submit-btn">Send Enquiry</button>
+            <p id="my-form-status" style="margin-top: 25px;"></p>
+        </form>
+    </div>
 </section>
+
+<footer>
+    <div class="social-links">
+        <a href="https://instagram.com/yourhandle" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="footer-text">
+        <p>&copy; 2026 Sophie Maynard | Bespoke Artwork</p>
+        <p style="opacity: 0.5; font-size: 0.6rem;">All rights reserved.</p>
+    </div>
+</footer>
 
 <div id="lightbox" onclick="this.style.display='none'">
     <img id="lightbox-img" src="">
 </div>
 
-<footer>
-    <div class="footer-content">
-        <div class="social-links">
-            <a href="https://instagram.com/sophiemaynardart" target="_blank" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-        
-        <div class="footer-text">
-            <p>&copy; 2026 Sophie Maynard | Bespoke Artwork</p>
-            <p class="disclaimer">All rights reserved. Images may not be used without permission.</p>
-        </div>
-    </div>
-</footer>
-    
 <script>
-    // 1. LIGHTBOX LOGIC
-    document.querySelectorAll('.gallery-item img').forEach(image => {
-        image.onclick = () => {
-            document.getElementById('lightbox').style.display = 'flex';
-            document.getElementById('lightbox-img').src = image.getAttribute('src');
-        }
+    // 1. CURSOR LOGIC
+    const cursor = document.querySelector('.cursor');
+    const follower = document.querySelector('.cursor-follower');
+    document.addEventListener('mousemove', e => {
+        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        follower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+    });
+    document.querySelectorAll('a, button, .gallery-item').forEach(el => {
+        el.onmouseenter = () => follower.classList.add('cursor-grow');
+        el.onmouseleave = () => follower.classList.remove('cursor-grow');
     });
 
-    // 2. FADE-IN ON SCROLL LOGIC
+    // 2. REVEAL LOGIC
     function reveal() {
         var reveals = document.querySelectorAll(".reveal");
-        for (var i = 0; i < reveals.length; i++) {
+        reveals.forEach(r => {
             var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 150; // Triggers when the section is 150px into view
-            
-            if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add("active");
-            }
-        }
+            var elementTop = r.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 150) r.classList.add("active");
+        });
     }
     window.addEventListener("scroll", reveal);
-    reveal(); // Run once on load to show top section
+    reveal();
 
-    // 3. SEAMLESS WEB3FORMS SUBMISSION
+    // 3. LIGHTBOX
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+        img.onclick = () => {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = img.src;
+        }
+    });
+
+    // 4. FORM SUBMISSION
     const form = document.getElementById('my-form');
     const status = document.getElementById('my-form-status');
-    const button = document.getElementById('my-form-button');
-
     form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-      status.innerHTML = "Sending...";
-      
-      fetch('https://api.web3forms.com/submit', {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-              body: json
-          })
-          .then(async (response) => {
-              if (response.status == 200) {
-                  status.innerHTML = "Thanks! Sophie will be in touch soon.";
-                  status.style.color = "#C5A059"; // Use your gold color
-                  form.reset();
-                  button.style.display = "none";
-              }
-          });
-    });
-    // 4. LUXURY CURSOR LOGIC
-const cursor = document.querySelector('.cursor');
-        const follower = document.querySelector('.cursor-follower');
-
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            follower.style.left = e.clientX + 'px';
-            follower.style.top = e.clientY + 'px';
+        e.preventDefault();
+        const json = JSON.stringify(Object.fromEntries(new FormData(form)));
+        status.innerHTML = "Sending...";
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: json
+        }).then(res => {
+            if (res.status == 200) {
+                status.innerHTML = "Success. Sophie will be in touch soon.";
+                status.style.color = "#C5A059";
+                form.reset();
+                document.getElementById('my-form-button').style.display = 'none';
+            }
         });
-
-// Add 'grow' effect on interactive elements
-document.querySelectorAll('a, button, .gallery-item').forEach(link => {
-    link.addEventListener('mouseenter', () => {
-        follower.classList.add('cursor-grow');
     });
-    link.addEventListener('mouseleave', () => {
-        follower.classList.remove('cursor-grow');
-    
-});
-    
 </script>
 
 </body>
