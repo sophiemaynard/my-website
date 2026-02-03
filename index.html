@@ -386,6 +386,29 @@ footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); text
               }
           });
     });
+    // 4. LUXURY CURSOR LOGIC
+const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
+
+document.addEventListener('mousemove', e => {
+    // Move the dot and the circle to the mouse position
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    
+    follower.style.left = e.clientX + 'px';
+    follower.style.top = e.clientY + 'px';
+});
+
+// Add 'grow' effect on interactive elements
+document.querySelectorAll('a, button, .gallery-item').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        follower.classList.add('cursor-grow');
+    });
+    link.addEventListener('mouseleave', () => {
+        follower.classList.remove('cursor-grow');
+    
+});
+    
 </script>
 
 </body>
