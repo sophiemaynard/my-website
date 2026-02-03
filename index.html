@@ -20,20 +20,15 @@
         /* 2. CUSTOM GOLD ARROW CURSOR (Desktop Only) */
         @media (min-width: 992px) {
             body { cursor: none; }
-            a, button, .gallery-item { cursor: none; }
+            a, button, .gallery-item, .nav-btn { cursor: none; }
         }
         
         .cursor {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            color: #C5A059; /* Your luxury gold */
-            font-size: 1.2rem;
-            /* Center the arrow on the mouse point */
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: fixed; pointer-events: none; z-index: 9999;
+            color: #C5A059; font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center;
             transition: transform 0.1s ease-out;
+            transform: translate(-50%, -50%); /* Centers the icon on mouse */
         }
 
         /* 3. NAVIGATION */
@@ -91,110 +86,46 @@
         .social-links a:hover { color: #2D2926; }
         .footer-text p { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: #555; margin: 5px; }
 
-        /* 9. LIGHTBOX */
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
-        #lightbox img { max-width: 90%; max-height: 85%; border: 4px solid white; }
-
-        /* ARTIST SECTION SPLIT LAYOUT */
-.artist-container {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    text-align: left; /* Aligns text professionally against the image */
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.artist-image {
-    flex: 1;
-    line-height: 0;
-}
-
-.artist-image img {
-    width: 100%;
-    height: auto;
-    /* Optional: adds a very subtle "framed" look */
-    border: 1px solid rgba(197, 160, 89, 0.2);
-    padding: 10px;
-    background: #fff;
-}
-
-.artist-bio {
-    flex: 1.2;
-}
-
-.artist-bio h2 {
-    text-align: left;
-    margin-bottom: 30px;
-}
-
-.artist-bio h2::after {
-    margin: 20px 0 0 0; /* Moves the gold line to the left */
-}
-
-/* Responsive fix for mobile */
-@media (max-width: 768px) {
-    .artist-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .artist-bio h2 {
-        text-align: center;
-    }
-    .artist-bio h2::after {
-        margin: 20px auto 0;
-    }
-}
-    /* PHILOSOPHY SECTION SPLIT LAYOUT */
-.philosophy-container {
-    display: flex;
-    align-items: center;
-    gap: 80px;
-    text-align: left;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.philosophy-text {
-    flex: 1.2;
-}
-
-.philosophy-text h2 {
-    text-align: left;
-}
-
-.philosophy-text h2::after {
-    margin: 20px 0 0 0;
-}
-
-.philosophy-image {
-    flex: 1;
-    line-height: 0;
-}
-
-.philosophy-image img {
-    width: 100%;
-    height: auto;
-    box-shadow: 20px 20px 60px rgba(0,0,0,0.05); /* Soft shadow for depth */
-    border-radius: 2px;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .philosophy-container {
-        flex-direction: column-reverse; /* Puts text above image on mobile */
-        text-align: center;
-        gap: 40px;
-    }
-    .philosophy-text h2 {
-        text-align: center;
-    }
-    .philosophy-text h2::after {
-        margin: 20px auto 0;
-    }
-}
+        /* 9. LIGHTBOX WITH NAVIGATION */
+        #lightbox { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; 
+        }
+        #lightbox img { max-width: 85%; max-height: 80%; border: 2px solid #C5A059; }
         
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: #C5A059; font-size: 3rem;
+            padding: 20px; cursor: pointer; transition: 0.3s; z-index: 2100;
+        }
+        .nav-btn:hover { color: white; scale: 1.1; }
+        #prev-btn { left: 20px; }
+        #next-btn { right: 20px; }
+        #close-btn { position: absolute; top: 30px; right: 30px; font-size: 2rem; }
+
+        /* ARTIST SECTION - CLEANED */
+        .artist-container { display: flex; align-items: center; gap: 60px; text-align: left; max-width: 1000px; margin: 0 auto; }
+        .artist-image { flex: 1; line-height: 0; }
+        .artist-image img { width: 100%; height: auto; border: none; padding: 0; background: transparent; }
+        .artist-bio { flex: 1.2; }
+        .artist-bio h2 { text-align: left; margin-bottom: 30px; }
+        .artist-bio h2::after { margin: 20px 0 0 0; }
+
+        /* PHILOSOPHY SECTION */
+        .philosophy-container { display: flex; align-items: center; gap: 80px; text-align: left; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .philosophy-text { flex: 1.2; }
+        .philosophy-text h2 { text-align: left; }
+        .philosophy-text h2::after { margin: 20px 0 0 0; }
+        .philosophy-image { flex: 1; line-height: 0; }
+        .philosophy-image img { width: 100%; height: auto; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); border-radius: 2px; }
+
+        @media (max-width: 768px) {
+            .artist-container, .philosophy-container { flex-direction: column; text-align: center; }
+            .philosophy-container { flex-direction: column-reverse; }
+            .artist-bio h2, .philosophy-text h2 { text-align: center; }
+            .artist-bio h2::after, .philosophy-text h2::after { margin: 20px auto 0; }
+            .nav-btn { font-size: 2rem; padding: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -223,13 +154,9 @@
         </div>
         <div class="artist-bio">
             <h2>The Artist</h2>
-    <p>Based in Berkhamsted, my studio creates bespoke artwork tailored for both private collections and curated environments.
-I specialise in high-end pet portraiture that captures the character of a companion. My work in this field is an extension of my own life in the countryside, inspired by my whippet, Trudy, and my horse, Geenie.
-
-Beyond portraiture, I create site-specific artwork for all environments. From the sanctuary of a private home to the distinct atmosphere of a professional space, I believe art should define the identity of the room it inhabits.
-
-With a curated number of commissions accepted each year, I work closely with patrons to ensure every piece, whether a personal tribute or a centerpiece for a space, is perfectly suited to its surroundings.</p>
-</div>
+            <p>Based in Berkhamsted, my studio creates bespoke artwork tailored for both private collections and curated environments. I specialise in high-end pet portraiture that captures the character of a companion. My work in this field is an extension of my own life in the countryside, inspired by my whippet, Trudy, and my horse, Geenie.</p>
+            <p>Beyond portraiture, I create site-specific artwork for all environments. From the sanctuary of a private home to the distinct atmosphere of a professional space, I believe art should define the identity of the room it inhabits.</p>
+        </div>
     </div>
 </section>
     
@@ -237,8 +164,8 @@ With a curated number of commissions accepted each year, I work closely with pat
     <div class="philosophy-container">
         <div class="philosophy-text">
             <h2>The Philosophy</h2>
-        <p>I view every commission as a site-specific dialogue. A work of art must resonate with the architecture and atmosphere it inhabits. By considering light, scale, and the intended energy of a room, from the sanctuary of a home to the identity of a professional space, I ensure that each piece becomes a seamless, intentional extension of the interior.</p>
-    </div>
+            <p>I view every commission as a site-specific dialogue. A work of art must resonate with the architecture and atmosphere it inhabits. By considering light, scale, and the intended energy of a room, from the sanctuary of a home to the identity of a professional space, I ensure that each piece becomes a seamless, intentional extension of the interior.</p>
+        </div>
         <div class="philosophy-image">
             <img src="pink-seascape-acrylic-painting-abstract-bondi-beach-bondi-rise.jpg" alt="Artistic Detail">
         </div>
@@ -280,7 +207,7 @@ With a curated number of commissions accepted each year, I work closely with pat
 
 <section id="contact" class="reveal">
     <h2>Studio Enquiry</h2>
-    <p>I am delighted to announce that a limited number of commission slots are currently available. Please get in touch to discuss your artwork requirements</p>
+    <p>I am delighted to announce that a limited number of commission slots are currently available. Please get in touch to discuss your artwork requirements.</p>
     <div class="contact-container">
         <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
@@ -309,14 +236,16 @@ With a curated number of commissions accepted each year, I work closely with pat
     </div>
 </footer>
 
-<div id="lightbox" onclick="this.style.display='none'">
+<div id="lightbox">
+    <button id="close-btn" class="nav-btn"><i class="fas fa-times"></i></button>
+    <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
     <img id="lightbox-img" src="">
+    <button id="next-btn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
 </div>
 
 <script>
-    // 1. CLEAN GOLD ARROW CURSOR LOGIC
+    // 1. CURSOR LOGIC
     const cursor = document.querySelector('.cursor');
-    
     document.addEventListener('mousemove', e => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
@@ -334,13 +263,39 @@ With a curated number of commissions accepted each year, I work closely with pat
     window.addEventListener("scroll", reveal);
     reveal();
 
-    // 3. LIGHTBOX
-    document.querySelectorAll('.gallery-item img').forEach(img => {
+    // 3. LIGHTBOX WITH NAVIGATION
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const images = Array.from(document.querySelectorAll('.gallery-item img'));
+    let currentIndex = 0;
+
+    images.forEach((img, index) => {
         img.onclick = () => {
-            document.getElementById('lightbox').style.display = 'flex';
-            document.getElementById('lightbox-img').src = img.src;
+            currentIndex = index;
+            updateLightbox();
+            lightbox.style.display = 'flex';
         }
     });
+
+    function updateLightbox() {
+        lightboxImg.src = images[currentIndex].src;
+    }
+
+    document.getElementById('next-btn').onclick = (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        updateLightbox();
+    };
+
+    document.getElementById('prev-btn').onclick = (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateLightbox();
+    };
+
+    document.getElementById('close-btn').onclick = () => lightbox.style.display = 'none';
+    lightbox.onclick = () => lightbox.style.display = 'none';
+    lightboxImg.onclick = (e) => e.stopPropagation();
 
     // 4. FORM SUBMISSION
     const form = document.getElementById('my-form');
