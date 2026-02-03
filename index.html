@@ -49,6 +49,7 @@
         .mt-2 { margin-top: 2rem; }
         .bg-white { background-color: var(--white); }
         .bg-cream { background-color: var(--bg-cream); }
+        .hidden { display: none; } /* Added for spam protection */
 
         /* --- TYPOGRAPHY --- */
         .eyebrow, .eyebrow-light {
@@ -78,7 +79,6 @@
             border-radius: 2px;
         }
 
-        /* UPDATED: Dark button with white text */
         .btn-primary {
             background: var(--text-charcoal);
             border: 1px solid var(--text-charcoal);
@@ -124,7 +124,7 @@
         /* --- HERO SECTION --- */
         .hero {
             height: 90vh;
-            background-image: url('hero-portrait-giant-stag-majestic-deer-wildlife-painting.jpg'); /* Ensure hero.jpg is in your folder */
+            background-image: url('hero-portrait-giant-stag-majestic-deer-wildlife-painting.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -164,28 +164,6 @@
         .section-dark { background-color: #2e3b33; color: var(--white); padding: 100px 0; }
         .section-dark h2, .section-dark p { color: var(--white); }
         .section-dark p strong { color: var(--accent-gold); }
-
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px; }
-        .price-card {
-            background: var(--bg-cream); padding: 50px 40px; color: var(--text-charcoal);
-            position: relative; border: 1px solid transparent; transition: transform 0.3s ease;
-        }
-        .price-card:hover { transform: translateY(-5px); }
-        .price-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
-        .price-desc { font-size: 0.95rem; margin-bottom: 25px; height: 50px; color: #666; }
-        .price-card hr { border: 0; border-top: 1px solid #ddd; margin-bottom: 25px; }
-
-        .price-list li { display: flex; justify-content: space-between; margin-bottom: 18px; font-size: 1.1rem; }
-        .amount { font-family: var(--font-heading); font-weight: 600; }
-        .note { font-size: 0.8rem; color: #999; margin-top: 25px; font-style: italic; }
-
-        .price-card.featured { border: 2px solid var(--accent-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.3); z-index: 2; }
-        .badge {
-            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-            background: var(--accent-gold); color: var(--white); padding: 8px 20px;
-            text-transform: uppercase; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
-        }
-        .pricing-footer { margin-top: 60px; opacity: 0.9; }
 
         /* --- TESTIMONIALS --- */
         .testimonials-grid {
@@ -230,75 +208,33 @@
             padding-bottom: 2px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* --- CONTACT / LAUNCH FORM --- */
+        /* --- CONTACT FORM --- */
         .contact-form { margin-top: 40px; text-align: left; }
-        .contact-form input, .contact-form select, .contact-form textarea {
+        .contact-form input, .contact-form textarea {
             width: 100%; padding: 15px; margin-bottom: 15px;
             border: 1px solid #dcdcdc; background: #fff;
             font-family: var(--font-body); font-size: 1rem; color: #333;
         }
         .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent-sage); }
-        
-        .checkbox-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            color: #555;
-        }
-        .checkbox-wrapper input { width: auto; margin-bottom: 0; }
 
-        /* --- FOOTER (COMPLIANT & DESIGNED) --- */
+        /* --- FOOTER --- */
         footer {
             background-color: #1a1a1a;
             color: #999;
             padding: 5rem 2rem;
             text-align: center;
             font-size: 0.9rem;
-            border-top: none; /* Removed the previous light border */
         }
-
-        .footer-logo {
-            font-family: 'Pinyon Script', cursive; /* Signature font */
-            font-size: 2.5rem; color: #fff;
-            margin-bottom: 2rem; display: inline-block;
-        }
-
         .social-links { margin-bottom: 2rem; }
         .social-links a { 
             margin: 0 15px; text-transform: uppercase; letter-spacing: 1px; 
             font-size: 0.75rem; transition: color 0.3s; color: #bbb; 
         }
         .social-links a:hover { color: #fff; }
-
         .copyright { margin-bottom: 3rem; font-size: 0.8rem; }
-
-        /* Legal Section */
-        .legal {
-            max-width: 600px;
-            margin: 0 auto 4rem auto;
-            font-size: 0.75rem;
-            line-height: 1.6;
-            color: #666;
-        }
+        .legal { max-width: 600px; margin: 0 auto; font-size: 0.75rem; line-height: 1.6; color: #666; }
         .legal strong { color: #888; font-weight: 600; }
 
-        /* Quote Section */
-        .footer-quote {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 3rem;
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #ccc;
-            font-weight: 300;
-        }
-        .footer-quote b { font-weight: 600; color: #fff; }
-        .footer-quote i { font-style: italic; color: #fff; }
-
-        /* --- MOBILE --- */
         @media (max-width: 768px) {
             .navbar { padding: 15px 20px; }
             .nav-links {
@@ -310,11 +246,7 @@
             .hamburger { display: block; }
             .hero h1 { font-size: 2.5rem; }
             .two-col { grid-template-columns: 1fr; gap: 40px; }
-            .pricing-grid { gap: 30px; }
-            /* Footer mobile adjustment */
-            .footer-content { flex-direction: column; text-align: center; gap: 20px; }
         }
-        /* --- EMBEDDED CSS END --- */
     </style>
 </head>
 <body>
@@ -350,12 +282,12 @@
             <div class="text-block bio-text">
                 <span class="eyebrow">Capturing Your Moments</span>
                 <h2>The Artist’s Eye</h2>
-                <p>From my studio in Berkhamsted, I create works that serve as the emotional and aesthetic anchor of a room. A portrait should capture more than a physical likeness; it should reflect the character of a companion. My goal is to create a meaningful tribute that feels as alive as the subject itself.</p>
-                <p>I also create site-specific artwork designed to suit the atmosphere of a room. Whether it is a personal residence or a professional environment, I believe art should be the focal point that brings a space together. I work with you to ensure the scale and style of the piece are perfectly balanced with its surroundings.</p>
-                <p>To ensure each project receives the focus it requires, I accept only a select number of commissions each year. This allows me to maintain a high standard of craftsmanship and work closely with every patron from the first sketch to the final piece.</p>
+                <p>From my studio in Berkhamsted, I create works that serve as the emotional and aesthetic anchor of a room. A portrait should capture more than a physical likeness; it should reflect the character of a companion.</p>
+                <p>I also create site-specific artwork designed to suit the atmosphere of a room. Whether it is a personal residence or a professional environment, I believe art should be the focal point that brings a space together.</p>
+                <p>To ensure each project receives the focus it requires, I accept only a select number of commissions each year.</p>
             </div>
             <div class="image-block">
-                <img src="sophie-maynard-fine-art-pet-portrait-artist-and-whippet.jpg" alt="Sophie Maynard in nature, with her muse, Trudy">
+                <img src="sophie-maynard-fine-art-pet-portrait-artist-and-whippet.jpg" alt="Sophie Maynard in nature">
             </div>
         </div>
     </section>
@@ -363,7 +295,7 @@
     <section id="scenic-story" class="section-padding">
         <div class="container two-col">
             <div class="image-block">
-                <img src="black-white-whippet-portrait.jpg" alt="Detail of acrylic brushwork on canvas">
+                <img src="black-white-whippet-portrait.jpg" alt="Detail of acrylic brushwork">
             </div>
             <div class="text-block">
                 <span class="eyebrow">The Philosophy</span>
@@ -381,12 +313,11 @@
                 <h2>Commission Guide 2026</h2>
                 <p>Current Booking Status: <strong>Five Bespoke Slots Remaining</strong></p>
             </div>
-            <p>Creating a bespoke piece of art is a collaborative journey. Whether we are capturing the character of a companion or designing a centerpiece for a room, I follow a thoughtful process to ensure the final work feels perfectly at home in your space.</p>
-            <p><b>1. Initial Enquiry & Availability:</b> I enjoy working closely with my clients, so I take on a limited number of commissions at a time. This ensures I can give your project the dedicated energy and care it deserves. The first step is a simple conversation to check my current availability and discuss what you have in mind for your piece.</p>
-            <p><b>2. Consultation & Reference:</b> Once we move forward, we will have a consultation to discuss the requirements for your piece. For portraits, we will review and select the best reference photographs together to ensure we capture the right character. We will look at the specific room where the art will hang, discussing the lighting, the colour palette, and the overall atmosphere. This allows us to tailor the work so it perfectly complements the feel of the space.</p>
-            <p><b>3. The Creative Journey:</b> Once the work begins, I provide updates along the way. This allows you to see the piece develop and ensures that the final artwork resonates with the spirit and style we discussed. Every commission is a partnership, resulting in an enduring work of art that is uniquely yours.</p>
-
-          
+            <p>Creating a bespoke piece of art is a collaborative journey. Whether we are capturing the character of a companion or designing a centerpiece for a room, I follow a thoughtful process.</p>
+            <p><b>1. Initial Enquiry:</b> A simple conversation to discuss your vision.</p>
+            <p><b>2. Consultation:</b> Reviewing references and the intended space.</p>
+            <p><b>3. The Creative Journey:</b> I provide updates as the work develops.</p>
+            <div class="text-center">
                 <a href="#contact" class="btn-gold">Enquire Today</a>
             </div>
         </div>
@@ -400,10 +331,11 @@
             </div>
             <div class="testimonials-grid">
                 <div class="review-card">
-                    <p class="review-text">"Sophie captured the exact look in Gus's eyes. It isn’t just a painting; it’s him. It’s the most precious thing we own."</p>
+                    <p class="review-text">"Sophie captured the exact look in Gus's eyes. It isn’t just a painting; it’s him."</p>
                     <p class="reviewer-name">— Lottie & Ben, London</p>
                 </div>
-              
+            </div>
+        </div>
     </section>
 
     <section id="gallery" class="section-padding bg-white">
@@ -413,15 +345,12 @@
                 <h2>Selected Works</h2>
             </div>
             <div class="gallery-grid">
-                <img src="staffordshire-bull-terrier-portrait-oil-painting.jpg" alt="Pet Portrait Commission">
-                <img src="vivid-spaniel-inquisitive-portrait.jpg" alt="Pet Portrait Commission">
-                <img src="british-bulldog-pet-portrait-commission.jpg" alt="Landscape Painting">
-                <img src="equestrian-horse-portrait-acrylic-stunning.jpg" alt="Bulldog Portrait">
-                <img src="atmospheric-sunrise-landscape-art-print.jpg" alt="Landscape Shot">
-                <img src="golden-retriever-puppy-oil-painting.jpg" alt="Pet Portrait Detail">
-                <img src="mare-and-foal-horse-oil-painting.jpg" alt="Pet Portrait Detail">
-                <img src="impala-drinking-at-waterhole-wildlife-painting.jpg" alt="Pet Portrait Detail">
-                <img src="sleeping-dog-puppy-sighthound.jpg" alt="Pet Portrait Detail">
+                <img src="staffordshire-bull-terrier-portrait-oil-painting.jpg" alt="Pet Portrait">
+                <img src="vivid-spaniel-inquisitive-portrait.jpg" alt="Spaniel Portrait">
+                <img src="british-bulldog-pet-portrait-commission.jpg" alt="Bulldog Portrait">
+                <img src="equestrian-horse-portrait-acrylic-stunning.jpg" alt="Horse Portrait">
+                <img src="atmospheric-sunrise-landscape-art-print.jpg" alt="Landscape">
+                <img src="golden-retriever-puppy-oil-painting.jpg" alt="Golden Retriever">
             </div>
             <div class="text-center mt-2">
                 <a href="https://instagram.com/sophiemaynardart" target="_blank" class="link-styled">View Full Portfolio on Instagram &rarr;</a>
@@ -433,35 +362,35 @@
         <div class="container text-center" style="max-width: 600px;">
             <span class="eyebrow">Start a Conversation</span>
             <h2>Enquiry Form</h2>
-            <p>I am delighted to have opened a selection of commission slots, though availability remains limited. Please get in touch using the form below to share your vision.</p>
+            <p>Please share your vision below to enquire about the remaining 2026 commission slots.</p>
             
-            <form name="contact" method="POST" data-netlify="true" class="contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                <input type="hidden" name="subject" value="New Commission Enquiry - Sophie Maynard Art">
+                <input type="checkbox" name="botcheck" class="hidden">
+
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" rows="4" placeholder="Your Message"></textarea>
+                <textarea name="message" rows="4" placeholder="Tell me about your vision (subject, size, or room style)..." required></textarea>
                 
                 <button type="submit" class="btn-gold" style="width: 100%;">Submit Enquiry</button>
             </form>
-        </div>
+            </div>
     </section>
 
-    <footer id="contact">
-        
+    <footer>
         <div class="social-links">
             <a href="https://www.instagram.com/sophiemaynardart/" target="_blank">Instagram</a>
             <a href="mailto:hello@sophiemaynard.com">Email</a>
         </div>
-
         <p class="copyright">&copy; 2026 Sophie Maynard Art. All rights reserved.</p>
-
         <div class="legal">
             <p>
                 <strong>Tocco Design Ltd</strong><br>
                 Registered in England & Wales No. 15201522<br>
-                Registered Office: Mercer House, 15 High Street, Redbourn, Herts, AL3 7LE, United Kingdom
+                Mercer House, 15 High Street, Redbourn, Herts, AL3 7LE, UK
             </p>
         </div>
-
     </footer>
 
     <script>
