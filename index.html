@@ -99,7 +99,7 @@
         }
         
         textarea { 
-            resize: none; /* Disables the bottom-right expansion handle */
+            resize: none; 
         }
         
         .submit-btn { 
@@ -111,10 +111,23 @@
             letter-spacing: 2px; 
             font-size: 0.8rem;
             cursor: pointer; 
-            width: 200px; /* Fixed width */
+            width: 200px; 
             transition: background-color 0.4s ease;
         }
         .submit-btn:hover { background-color: #A37E3C; }
+
+        /* Success Message Styling */
+        .thank-you-msg {
+            animation: fadeIn 0.8s ease forwards;
+            padding: 40px 0;
+        }
+        .thank-you-msg i { color: #C5A059; font-size: 2rem; margin-bottom: 20px; }
+        .thank-you-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 10px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* 8. MISC */
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; justify-content: center; align-items: center; }
@@ -195,28 +208,28 @@
     <div style="max-width: 800px; margin: 0 auto;">
         <h2>Commission Guide</h2>
         <p>Creating a bespoke piece of art is a collaborative journey. Whether we are capturing the character of a companion or designing a centerpiece for a room, I follow a thoughtful process to ensure the final work feels perfectly at home in your space.</p>
-        <p><b>1. Initial Enquiry & Availability: </b>I enjoy working closely with my clients, so I take on a limited number of commissions at a time. This ensures I can give your project the dedicated energy and care it deserves. The first step is a simple conversation to check my current availability and discuss what you have in mind for your piece.</p>
-        <p><b>2. Consultation & Reference: </b>We will work together to select or capture the right reference photographs. For interior pieces, we will discuss the specific room where the art will hang, considering the lighting, the color palette, and the overall atmosphere to ensure the piece complements its surroundings.</p>
-        <p><b>3. The Creative Journey: </b>Once the work begins, I provide updates along the way. This allows you to see the piece develop and ensures that the final artwork resonates with the spirit and style we discussed. Every commission is a partnership, resulting in an enduring work of art that is uniquely yours.</p>
+        <p><b>1. Initial Enquiry & Availability: </b>I enjoy working closely with my clients, so I take on a limited number of commissions at a time. The first step is a simple conversation to check my current availability.</p>
+        <p><b>2. Consultation & Reference: </b>We will work together to select or capture the right reference photographs.</p>
+        <p><b>3. The Creative Journey: </b>Once the work begins, I provide updates along the way. Every commission is a partnership.</p>
     </div>
 </section>
 
 <section id="testimonials" class="reveal">
     <h2>Testimonials</h2>
-    <p style="font-style: italic;">"Sophie captured the exact look in Gus's eyes. It isn’t just a painting; it’s him. It’s the most precious thing we own. A truly professional and talented artist."</p>
+    <p style="font-style: italic;">"Sophie captured the exact look in Gus's eyes. It isn’t just a painting; it’s him. It’s the most precious thing we own."</p>
     <p>— Lottie & Ben, London</p>
 </section>
 
 <section id="contact" class="reveal">
     <h2>Studio Enquiry</h2>
-    <p>I am delighted to have opened a selection of commission slots, though availability remains limited. Please get in touch using the form below to share your vision.</p>
-    <div class="contact-container">
+    <p id="contact-intro">I am delighted to have opened a selection of commission slots, though availability remains limited. Please get in touch using the form below to share your vision.</p>
+    <div class="contact-container" id="contact-box">
         <form id="my-form">
             <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
             <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
             <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
             <div class="form-group"><textarea name="message" rows="4" placeholder="Your Message"></textarea></div>
-            <button type="submit" class="submit-btn">Send Enquiry</button>
+            <button type="submit" id="submit-btn" class="submit-btn">Send Enquiry</button>
             <p id="my-form-status" style="margin-top:20px;"></p>
         </form>
     </div>
@@ -243,6 +256,46 @@
         img.onclick = () => { lbImg.src = img.src; lb.style.display = 'flex'; } 
     });
     lb.onclick = () => lb.style.display = 'none';
+
+    // FORM HANDLING
+    const form = document.getElementById('my-form');
+    const contactBox = document.getElementById('contact-box');
+    const contactIntro = document.getElementById('contact-intro');
+    const btn = document.getElementById('submit-btn');
+    const statusText = document.getElementById('my-form-status');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        btn.innerHTML = "Sending...";
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: json
+        })
+        .then(async (response) => {
+            if (response.status == 200) {
+                // Success: Fade out intro and replace form with Thank You message
+                contactIntro.style.opacity = "0";
+                contactBox.innerHTML = `
+                    <div class="thank-you-msg">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h3>Thank You</h3>
+                        <p>I have received your enquiry and will personally review the details of your request.</p>
+                    </div>`;
+            } else {
+                statusText.innerHTML = "Something went wrong. Please try again.";
+                btn.innerHTML = "Send Enquiry";
+            }
+        })
+        .catch(error => {
+            statusText.innerHTML = "Connection error. Please try again.";
+            btn.innerHTML = "Send Enquiry";
+        });
+    });
 
     reveal();
 </script>
