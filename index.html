@@ -25,9 +25,10 @@
             transform: translate(-50%, -50%);
         }
 
+        /* Refined smaller cursor expansion */
         .cursor-hover #custom-cursor {
-            transform: translate(-50%, -50%) scale(3);
-            background-color: rgba(197, 160, 89, 0.4);
+            transform: translate(-50%, -50%) scale(2.2);
+            background-color: rgba(197, 160, 89, 0.5);
         }
 
         @media (max-width: 991px) {
@@ -105,19 +106,34 @@
         .artist-bio h2, .philosophy-text h2 { text-align: left; margin-bottom: 30px; }
         .artist-bio h2::after, .philosophy-text h2::after { margin: 20px 0 0 0; }
 
-        /* 6. PORTFOLIO */
+        /* 6. PORTFOLIO WITH ZOOM EFFECT */
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.6s; }
-        .gallery-item:hover img { opacity: 0.8; }
+        .gallery-item { overflow: hidden; background: #000; }
+        .gallery-item img { 
+            width: 100%; aspect-ratio: 1/1; object-fit: cover; 
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease; 
+        }
+        .gallery-item:hover img { 
+            transform: scale(1.1); 
+            opacity: 0.85; 
+        }
 
-        /* 7. CONTACT & BUTTON */
-        .contact-container { max-width: 700px; margin: 0 auto; background: #FFF; padding: 60px; }
+        /* 7. CONTACT & REFINED BUTTON */
+        .contact-container { max-width: 600px; margin: 0 auto; background: #FFF; padding: 60px; }
         .form-group { margin-bottom: 30px; text-align: left; }
         input, textarea { width: 100%; border: none; border-bottom: 1px solid #D1D1D1; padding: 15px 0; background: transparent; font-family: 'Montserrat'; }
         
         .submit-btn { 
-            background-color: #C5A059; color: #F9F8F4; padding: 20px 60px; border: none;
-            text-transform: uppercase; letter-spacing: 3px; width: 100%; transition: 0.4s;
+            background-color: #C5A059; 
+            color: #F9F8F4; 
+            padding: 15px 40px; /* Reduced for a smaller, cleaner look */
+            border: none;
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            width: auto; 
+            min-width: 180px;
+            display: inline-block;
+            transition: background-color 0.4s ease;
         }
         .submit-btn:hover { background-color: #A37E3C; }
 
@@ -205,12 +221,13 @@
 
 <section id="testimonials" class="reveal">
     <h2>Testimonials</h2>
-    <p style="font-style: italic;">"The painting of Buster perfectly captures his playful spirit. A truly professional and talented artist."</p>
-    <p>— Sarah & James, London</p>
+    <p style="font-style: italic;">"Sophie captured the exact look in Gus's eyes. It isn’t just a painting; it’s him. It’s the most precious thing I own. A truly professional and talented artist."</p>
+    <p>— Lottie & Ben, London</p>
 </section>
 
 <section id="contact" class="reveal">
     <h2>Studio Enquiry</h2>
+    <p>I am delighted to have opened a selection of commission slots, though availability remains limited to ensure every piece receives the time and detail it deserves. Please get in touch using the form below to share your vision and begin the process.</p>
     <div class="contact-container">
         <form id="my-form">
             <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
@@ -236,6 +253,7 @@
     // Cursor & Reveal
     const cursor = document.getElementById('custom-cursor');
     document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    
     document.querySelectorAll('a, button, .gallery-item img, input, textarea').forEach(item => {
         item.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
         item.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
