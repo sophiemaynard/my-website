@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sophie Maynard | Artist</title>
     <style>
+        .gallery {
+    display: grid;
+    /* This tells the browser: "Make columns at least 250px wide, 
+       but fill the rest of the space automatically" */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px; /* Space between images */
+    margin-top: 20px;
+}
+
+.gallery-item {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Forces all thumbnails to be the same height */
+    object-fit: cover; /* Crops the image to fit the square without stretching it */
+    border-radius: 3px;
+    display: block;
+}
+
+.gallery-item p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+}
         body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
         header { background: #f4f4f4; padding: 2rem; text-align: center; }
         section { padding: 2rem; max-width: 800px; margin: auto; }
