@@ -9,32 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* 1. GENERAL & SELECTIVE CUSTOM CURSOR */
+        /* 1. GENERAL */
         html { scroll-behavior: smooth; }
         body { 
             font-family: 'Montserrat', sans-serif; 
             line-height: 1.8; margin: 0; 
             color: #2D2926; background-color: #F9F8F4; 
-        }
-
-        #custom-cursor {
-            width: 30px; height: 30px; 
-            background-color: rgba(197, 160, 89, 0.3);
-            border: 1px solid rgba(197, 160, 89, 0.6);
-            border-radius: 50%; position: fixed; pointer-events: none;
-            z-index: 10000; transition: transform 0.2s ease, opacity 0.2s ease;
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
-        }
-
-        /* Gold circle only appears on interactive elements */
-        .cursor-hover #custom-cursor {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        @media (max-width: 991px) {
-            #custom-cursor { display: none; }
         }
 
         /* 2. NAVIGATION */
@@ -49,7 +29,7 @@
         }
         nav a:hover { color: #C5A059; }
 
-        /* 3. HERO - DEEP BANNER & DARKER GRADIENT */
+        /* 3. HERO */
         .hero { 
             height: 90vh; 
             position: relative;
@@ -104,20 +84,28 @@
         .gallery-item { 
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); 
             line-height: 0;
-            overflow: visible; /* Prevent clipping during scale */
+            overflow: visible; 
+            cursor: pointer;
         }
         .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
-        .gallery-item:hover { transform: scale(1.05); z-index: 10; cursor: pointer; }
+        .gallery-item:hover { transform: scale(1.05); z-index: 10; }
 
-        /* 7. CONTACT & SMALLER BUTTON */
+        /* 7. CONTACT & STABLE BUTTON */
         .contact-container { max-width: 600px; margin: 0 auto; background: #FFF; padding: 60px; }
         .form-group { margin-bottom: 30px; text-align: left; }
         input, textarea { width: 100%; border: none; border-bottom: 1px solid #D1D1D1; padding: 15px 0; background: transparent; font-family: 'Montserrat'; outline: none; }
         
         .submit-btn { 
-            background-color: #C5A059; color: #F9F8F4; padding: 14px 35px; border: none;
-            text-transform: uppercase; letter-spacing: 2px; width: auto; font-size: 0.8rem;
-            cursor: pointer; transition: background-color 0.4s ease;
+            background-color: #C5A059; 
+            color: #F9F8F4; 
+            padding: 14px 35px; 
+            border: none;
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-size: 0.8rem;
+            cursor: pointer; 
+            width: 200px; /* Fixed width to prevent expansion */
+            transition: background-color 0.4s ease;
         }
         .submit-btn:hover { background-color: #A37E3C; }
 
@@ -136,8 +124,6 @@
     </style>
 </head>
 <body>
-
-<div id="custom-cursor"></div>
 
 <nav>
     <a href="#about">The Artist</a>
@@ -230,18 +216,6 @@
 <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-    const cursor = document.getElementById('custom-cursor');
-    document.addEventListener('mousemove', (e) => { 
-        cursor.style.left = e.clientX + 'px'; 
-        cursor.style.top = e.clientY + 'px'; 
-    });
-    
-    // Circle only appears on hover of links/buttons/gallery
-    document.querySelectorAll('a, button, input, textarea, .gallery-item').forEach(item => {
-        item.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-        item.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
-
     function reveal() {
         document.querySelectorAll(".reveal").forEach(r => { 
             if (r.getBoundingClientRect().top < window.innerHeight - 150) r.classList.add("active"); 
