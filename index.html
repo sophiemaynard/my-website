@@ -145,7 +145,56 @@
         margin: 20px auto 0;
     }
 }
-    
+    /* PHILOSOPHY SECTION SPLIT LAYOUT */
+.philosophy-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    text-align: left;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.philosophy-text {
+    flex: 1.2;
+}
+
+.philosophy-text h2 {
+    text-align: left;
+}
+
+.philosophy-text h2::after {
+    margin: 20px 0 0 0;
+}
+
+.philosophy-image {
+    flex: 1;
+    line-height: 0;
+}
+
+.philosophy-image img {
+    width: 100%;
+    height: auto;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.05); /* Soft shadow for depth */
+    border-radius: 2px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .philosophy-container {
+        flex-direction: column-reverse; /* Puts text above image on mobile */
+        text-align: center;
+        gap: 40px;
+    }
+    .philosophy-text h2 {
+        text-align: center;
+    }
+    .philosophy-text h2::after {
+        margin: 20px auto 0;
+    }
+}
+        
     </style>
 </head>
 <body>
