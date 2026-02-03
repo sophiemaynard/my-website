@@ -17,22 +17,24 @@
             color: #2D2926; background-color: #F9F8F4; 
         }
 
-        /* 2. CUSTOM CURSOR (Desktop Only) */
+        /* 2. CUSTOM GOLD ARROW CURSOR (Desktop Only) */
         @media (min-width: 992px) {
             body { cursor: none; }
             a, button, .gallery-item { cursor: none; }
         }
+        
         .cursor {
-            width: 8px; height: 8px; background-color: #C5A059;
-            border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            color: #C5A059; /* Your luxury gold */
+            font-size: 1.2rem;
+            /* Center the arrow on the mouse point */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.1s ease-out;
         }
-        .cursor-follower {
-            width: 40px; height: 40px; border: 1px solid #C5A059;
-            border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998;
-            transition: transform 0.15s ease-out, opacity 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-        .cursor-grow { transform: translate(-50%, -50%) scale(1.5); background-color: rgba(197, 160, 89, 0.1); border: none; }
 
         /* 3. NAVIGATION */
         nav { 
@@ -96,8 +98,9 @@
 </head>
 <body>
 
-<div class="cursor"></div>
-<div class="cursor-follower"></div>
+<div class="cursor">
+    <i class="fas fa-location-arrow" style="transform: rotate(-45deg);"></i>
+</div>
 
 <nav>
     <a href="#about">The Artist</a>
@@ -114,7 +117,13 @@
 
 <section id="about" class="reveal">
     <h2>The Artist</h2>
-    <p>Based in the UK, I am a fine artist specializing in contemporary pet portraiture. My work seeks to find the balance between technical precision and raw, emotional character.</p>
+    <p>Based in Berkhamsted, my studio creates bespoke artwork tailored for both private collections and curated environments. My practice is driven by a lifelong love for animals, the outdoors, and a deep appreciation for intentional design.
+
+I specialise in high-end pet portraiture that captures the character of a companion. My work in this field is an extension of my own life in the countryside, inspired by the my whippet, Trudy, and my horse, Geenie.
+
+Beyond portraiture, I create site-specific artwork for all environments. From the sanctuary of a private home to the distinct atmosphere of a professional space, I believe art should define the identity of the room it inhabits.
+
+With a curated number of commissions accepted each year, I work closely with patrons to ensure every piece, whether a personal tribute or a centerpiece for a space, is perfectly suited to its surroundings.</p>
 </section>
 
 <section id="philosophy" class="reveal" style="background-color: #F3F1ED; max-width: 100%;">
@@ -193,16 +202,12 @@
 </div>
 
 <script>
-    // 1. CURSOR LOGIC
+    // 1. CLEAN GOLD ARROW CURSOR LOGIC
     const cursor = document.querySelector('.cursor');
-    const follower = document.querySelector('.cursor-follower');
+    
     document.addEventListener('mousemove', e => {
-        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        follower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-    });
-    document.querySelectorAll('a, button, .gallery-item').forEach(el => {
-        el.onmouseenter = () => follower.classList.add('cursor-grow');
-        el.onmouseleave = () => follower.classList.remove('cursor-grow');
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
 
     // 2. REVEAL LOGIC
@@ -238,7 +243,7 @@
             body: json
         }).then(res => {
             if (res.status == 200) {
-                status.innerHTML = "Success. Sophie will be in touch soon.";
+                status.innerHTML = "Thank you for reaching out. I have received your enquiry and will personally review the details of your request.";
                 status.style.color = "#C5A059";
                 form.reset();
                 document.getElementById('my-form-button').style.display = 'none';
