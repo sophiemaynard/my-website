@@ -133,6 +133,23 @@
             .artist-bio h2::after, .philosophy-text h2::after { margin: 20px auto 0; }
             .nav-btn { font-size: 2rem; padding: 15px; }
         }
+        #my-form-status {
+    line-height: 2;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #2D2926;
+    margin-top: 0;
+}
+
+.success-container {
+    padding: 40px 0;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
     </style>
 </head>
 <body>
@@ -306,26 +323,46 @@
     lightbox.onclick = () => lightbox.style.display = 'none';
     lightboxImg.onclick = (e) => e.stopPropagation();
 
-    // 4. FORM SUBMISSION
-    const form = document.getElementById('my-form');
-    const status = document.getElementById('my-form-status');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const json = JSON.stringify(Object.fromEntries(new FormData(form)));
-        status.innerHTML = "Sending...";
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            body: json
-        }).then(res => {
-            if (res.status == 200) {
-                status.innerHTML = "Thank you for reaching out. I have received your enquiry and will personally review the details of your request.";
-                status.style.color = "#C5A059";
-                form.reset();
-                document.getElementById('my-form-button').style.display = 'none';
-            }
-        });
+    // 4. REFINED FORM SUBMISSION (FREE TIER OPTIMIZED)
+const form = document.getElementById('my-form');
+const status = document.getElementById('my-form-status');
+const formContainer = document.querySelector('.contact-container');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    status.innerHTML = "Sending to the studio...";
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: json
+    }).then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+            // Hide the form and replace with a "Thank You" card
+            form.style.display = "none";
+            status.parentElement.innerHTML = `
+                <div class="success-container">
+                    <i class="fas fa-envelope-open-text" style="color: #C5A059; font-size: 2rem; margin-bottom: 20px;"></i>
+                    <h3 style="font-family: 'Playfair Display', serif; font-weight: 400;">Thank You</h3>
+                    <p>Your enquiry has been received. I personally review every request and will be in touch within 2&ndash;3 business days.</p>
+                    <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; color: #C5A059;">&mdash; Sophie Maynard</p>
+                </div>
+            `;
+        } else {
+            status.innerHTML = "Something went wrong. Please try again.";
+        }
+    }).catch(error => {
+        status.innerHTML = "Something went wrong. Please try again.";
     });
+});
 </script>
 
 </body>
