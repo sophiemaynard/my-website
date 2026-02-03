@@ -90,10 +90,17 @@
         .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
         .gallery-item:hover { transform: scale(1.05); z-index: 10; }
 
-        /* 7. CONTACT & STABLE BUTTON */
+        /* 7. CONTACT & STABLE BUTTON & NO RESIZE */
         .contact-container { max-width: 600px; margin: 0 auto; background: #FFF; padding: 60px; }
         .form-group { margin-bottom: 30px; text-align: left; }
-        input, textarea { width: 100%; border: none; border-bottom: 1px solid #D1D1D1; padding: 15px 0; background: transparent; font-family: 'Montserrat'; outline: none; }
+        input, textarea { 
+            width: 100%; border: none; border-bottom: 1px solid #D1D1D1; padding: 15px 0; 
+            background: transparent; font-family: 'Montserrat'; outline: none; 
+        }
+        
+        textarea { 
+            resize: none; /* Disables the bottom-right expansion handle */
+        }
         
         .submit-btn { 
             background-color: #C5A059; 
@@ -104,7 +111,7 @@
             letter-spacing: 2px; 
             font-size: 0.8rem;
             cursor: pointer; 
-            width: 200px; /* Fixed width to prevent expansion */
+            width: 200px; /* Fixed width */
             transition: background-color 0.4s ease;
         }
         .submit-btn:hover { background-color: #A37E3C; }
@@ -196,7 +203,7 @@
 
 <section id="contact" class="reveal">
     <h2>Studio Enquiry</h2>
-    <p>I am delighted to have opened a selection of commission slots, though availability remains limited to ensure every piece receives the time and detail it deserves. Please get in touch using the form below to share your vision and begin the process.</p>
+    <p>I am delighted to have opened a selection of commission slots, though availability remains limited. Please get in touch using the form below to share your vision.</p>
     <div class="contact-container">
         <form id="my-form">
             <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
