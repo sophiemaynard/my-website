@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* 1. LUXURY COLOR PALETTE & GENERAL */
+        /* 1. GENERAL STYLE */
         html { scroll-behavior: smooth; }
         body { 
             font-family: 'Montserrat', sans-serif; 
@@ -17,22 +17,7 @@
             color: #2D2926; background-color: #F9F8F4; 
         }
 
-        /* 2. CUSTOM GOLD ARROW CURSOR */
-        @media (min-width: 992px) {
-            body { cursor: none; }
-            /* Force removal of the 'hand' icon on all buttons/links */
-            a, button, .gallery-item, .nav-btn, input, textarea { cursor: none !important; }
-        }
-        
-        .cursor {
-            position: fixed; pointer-events: none; z-index: 9999;
-            color: #C5A059; font-size: 1.2rem;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.1s ease-out;
-            transform: translate(-50%, -50%);
-        }
-
-        /* 3. NAVIGATION */
+        /* 2. NAVIGATION */
         nav { 
             position: sticky; top: 0; background: rgba(249, 248, 244, 0.98); 
             padding: 20px; display: flex; justify-content: center; gap: 40px; 
@@ -44,7 +29,7 @@
         }
         nav a:hover { color: #C5A059; }
 
-        /* 4. HERO SECTION */
+        /* 3. HERO SECTION */
         .hero { 
             height: 75vh; 
             background: linear-gradient(rgba(45, 41, 38, 0.2), rgba(45, 41, 38, 0.2)), 
@@ -54,7 +39,7 @@
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400; margin-bottom: 10px; }
         .hero p { font-size: 1rem; max-width: 600px; letter-spacing: 1px; font-weight: 300; padding: 0 20px; }
 
-        /* 5. CONTENT SECTIONS & REVEAL ANIMATION */
+        /* 4. CONTENT SECTIONS & REVEAL */
         section { padding: 120px 20px; max-width: 1100px; margin: auto; text-align: center; }
         h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 50px; font-weight: 400; }
         h2::after { content: ''; display: block; width: 40px; height: 1px; background: #C5A059; margin: 20px auto 0; }
@@ -62,12 +47,46 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 6. PORTFOLIO */
+        /* 5. ARTIST SECTION */
+        .artist-container { display: flex; align-items: center; gap: 60px; text-align: left; max-width: 1000px; margin: 0 auto; }
+        .artist-image { flex: 1; line-height: 0; }
+        .artist-image img { width: 100%; height: auto; border: none; }
+        .artist-bio { flex: 1.2; }
+        .artist-bio h2 { text-align: left; margin-bottom: 30px; }
+        .artist-bio h2::after { margin: 20px 0 0 0; }
+
+        /* 6. PHILOSOPHY SECTION */
+        .philosophy-container { display: flex; align-items: center; gap: 80px; text-align: left; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .philosophy-text { flex: 1.2; }
+        .philosophy-text h2 { text-align: left; }
+        .philosophy-text h2::after { margin: 20px 0 0 0; }
+        .philosophy-image { flex: 1; line-height: 0; }
+        .philosophy-image img { width: 100%; height: auto; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); }
+
+        /* 7. PORTFOLIO GALLERY */
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.6s; }
+        .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.6s; cursor: pointer; }
         .gallery-item:hover img { opacity: 0.8; }
 
-        /* 7. CONTACT FORM */
+        /* 8. LIGHTBOX - MINIMALIST WHITE CONTROLS */
+        #lightbox { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.98); z-index: 2000; justify-content: center; align-items: center; 
+        }
+        #lightbox img { max-width: 90%; max-height: 85%; border: none; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: #FFFFFF; font-size: 2rem;
+            font-weight: 100; padding: 40px; cursor: pointer; transition: 0.3s; z-index: 2100;
+            opacity: 0.3;
+        }
+        .nav-btn:hover { opacity: 1; }
+        #prev-btn { left: 10px; }
+        #next-btn { right: 10px; }
+        #close-btn { position: absolute; top: 30px; right: 30px; font-size: 1.2rem; opacity: 0.3; }
+
+        /* 9. CONTACT FORM */
         .contact-container { max-width: 700px; margin: 0 auto; background: #FFF; padding: 60px; box-shadow: 0 20px 40px rgba(45, 41, 38, 0.05); }
         .form-group { margin-bottom: 40px; text-align: left; }
         input, textarea { 
@@ -81,65 +100,30 @@
         }
         .submit-btn:hover { background-color: #C5A059; letter-spacing: 5px; }
 
-        /* 8. FOOTER */
+        /* 10. BACK TO TOP */
+        #backToTop {
+            display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99;
+            border: 1px solid rgba(0, 0, 0, 0.1); background: rgba(255,255,255,0.8);
+            color: #2D2926; width: 40px; height: 40px; border-radius: 50%;
+            cursor: pointer; font-size: 0.7rem; transition: 0.3s;
+        }
+        #backToTop:hover { background: #2D2926; color: #FFF; }
+
+        /* FOOTER */
         footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.1); text-align: center; }
         .social-links { margin-bottom: 25px; }
         .social-links a { color: #C5A059; font-size: 1.8rem; text-decoration: none; transition: 0.3s; }
         .social-links a:hover { color: #2D2926; }
-        .footer-text p { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: #555; margin: 5px; }
-
-        /* 9. LIGHTBOX - REFINED ARROWS & NO BORDER */
-        #lightbox { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.97); z-index: 2000; justify-content: center; align-items: center; 
-        }
-        #lightbox img { 
-            max-width: 90%; max-height: 85%; border: none; /* Border Removed */
-            box-shadow: 0 0 50px rgba(0,0,0,0.5); 
-        }
-        
-        .nav-btn {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: none; border: none; color: #C5A059; font-size: 2.2rem; /* Slimmer font size */
-            font-weight: 100; padding: 40px; transition: 0.3s; z-index: 2100;
-            opacity: 0.6;
-        }
-        .nav-btn:hover { color: white; opacity: 1; }
-        #prev-btn { left: 10px; }
-        #next-btn { right: 10px; }
-        #close-btn { position: absolute; top: 30px; right: 30px; font-size: 1.5rem; opacity: 0.4; }
-        #close-btn:hover { opacity: 1; }
-
-        /* ARTIST SECTION */
-        .artist-container { display: flex; align-items: center; gap: 60px; text-align: left; max-width: 1000px; margin: 0 auto; }
-        .artist-image { flex: 1; line-height: 0; }
-        .artist-image img { width: 100%; height: auto; border: none; padding: 0; background: transparent; }
-        .artist-bio { flex: 1.2; }
-        .artist-bio h2 { text-align: left; margin-bottom: 30px; }
-        .artist-bio h2::after { margin: 20px 0 0 0; }
-
-        /* PHILOSOPHY SECTION */
-        .philosophy-container { display: flex; align-items: center; gap: 80px; text-align: left; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .philosophy-text { flex: 1.2; }
-        .philosophy-text h2 { text-align: left; }
-        .philosophy-text h2::after { margin: 20px 0 0 0; }
-        .philosophy-image { flex: 1; line-height: 0; }
-        .philosophy-image img { width: 100%; height: auto; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); border-radius: 2px; }
 
         @media (max-width: 768px) {
             .artist-container, .philosophy-container { flex-direction: column; text-align: center; }
             .philosophy-container { flex-direction: column-reverse; }
             .artist-bio h2, .philosophy-text h2 { text-align: center; }
             .artist-bio h2::after, .philosophy-text h2::after { margin: 20px auto 0; }
-            .nav-btn { font-size: 2rem; padding: 15px; }
         }
     </style>
 </head>
 <body>
-
-<div class="cursor">
-    <i class="fas fa-location-arrow" style="transform: rotate(-45deg);"></i>
-</div>
 
 <nav>
     <a href="#about">The Artist</a>
@@ -252,15 +236,10 @@
     <button id="next-btn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
 </div>
 
-<script>
-    // 1. CURSOR LOGIC
-    const cursor = document.querySelector('.cursor');
-    document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
+<button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
-    // 2. REVEAL LOGIC
+<script>
+    // 1. REVEAL LOGIC
     function reveal() {
         var reveals = document.querySelectorAll(".reveal");
         reveals.forEach(r => {
@@ -272,7 +251,7 @@
     window.addEventListener("scroll", reveal);
     reveal();
 
-    // 3. LIGHTBOX WITH NAVIGATION
+    // 2. LIGHTBOX LOGIC
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const images = Array.from(document.querySelectorAll('.gallery-item img'));
@@ -306,23 +285,35 @@
     lightbox.onclick = () => lightbox.style.display = 'none';
     lightboxImg.onclick = (e) => e.stopPropagation();
 
+    // 3. BACK TO TOP LOGIC
+    const btt = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            btt.style.display = "block";
+        } else {
+            btt.style.display = "none";
+        }
+        reveal(); // keep reveal running
+    };
+    btt.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+
     // 4. FORM SUBMISSION
     const form = document.getElementById('my-form');
     const status = document.getElementById('my-form-status');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const json = JSON.stringify(Object.fromEntries(new FormData(form)));
         status.innerHTML = "Sending...";
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            body: json
+            body: JSON.stringify(Object.fromEntries(new FormData(form)))
         }).then(res => {
             if (res.status == 200) {
-                status.innerHTML = "Thank you for reaching out. I have received your enquiry and will personally review the details of your request.";
-                status.style.color = "#C5A059";
-                form.reset();
-                document.getElementById('my-form-button').style.display = 'none';
+                form.style.display = "none";
+                status.innerHTML = `<div style="padding:40px; text-align:center;">
+                    <h3 style="font-family:'Playfair Display';">Thank You</h3>
+                    <p>I have received your enquiry and will be in touch within 2-3 business days.</p>
+                </div>`;
             }
         });
     });
