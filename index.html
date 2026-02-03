@@ -78,9 +78,68 @@ h2::after {
 }
 .gallery-item:hover img { filter: grayscale(0%) contrast(100%); opacity: 0.85; }
 
-/* CONTACT FORM & BUTTONS */
+/* REFINED LUXURY CONTACT FORM */
 .contact-container { 
-    background: #FFF; padding: 50px; border: 1px solid rgba(197, 160, 89, 0.15); 
+    max-width: 700px;
+    margin: 0 auto;
+    background: #FFF; 
+    padding: 60px; 
+    /* A very soft shadow that looks like the paper is lifting slightly */
+    box-shadow: 0 20px 40px rgba(45, 41, 38, 0.05);
+    border: 1px solid rgba(197, 160, 89, 0.1); 
+}
+
+.form-group {
+    margin-bottom: 40px; /* More breathing room */
+    text-align: left;
+}
+
+/* Floating-style inputs (Underline only) */
+input, textarea { 
+    width: 100%;
+    border: none; 
+    border-bottom: 1px solid #D1D1D1; 
+    padding: 15px 0; 
+    background: transparent; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #2D2926;
+    border-radius: 0;
+    transition: border-color 0.4s ease;
+}
+
+/* Gold accent when you click to type */
+input:focus, textarea:focus { 
+    border-bottom: 1px solid #C5A059; 
+    outline: none; 
+}
+
+/* Styling the placeholder text to be lighter and elegant */
+::placeholder {
+    color: #A0A0A0;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.submit-btn { 
+    margin-top: 20px;
+    background-color: #2D2926; 
+    color: #F9F8F4; 
+    padding: 20px 60px; 
+    border: 1px solid #2D2926; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    font-size: 0.8rem;
+    cursor: pointer; 
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.submit-btn:hover { 
+    background-color: #C5A059; 
+    border-color: #C5A059;
+    color: #FFF;
+    letter-spacing: 5px;
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 
 input, textarea { 
@@ -201,27 +260,23 @@ footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); text
     <p>"I am pleased to open my studio for a select number of new commissions. As each piece is uniquely tailored and hand-crafted, availability is limited, so please get in touch to discuss your artwork requirements.</p>
     
     <div class="contact-container">
-        <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
-            
-            <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
+    <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
 
-            <div class="form-group">
-                <input type="text" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email Address" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-            </div>
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
 
-            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-            <button id="my-form-button" type="submit" class="submit-btn">Send Enquiry</button>
-            
-            <p id="my-form-status" style="margin-top: 20px; font-weight: bold;"></p>
-        </form>
-    </div>
+        <button id="my-form-button" type="submit" class="submit-btn">Send Enquiry</button>
+        <p id="my-form-status" style="margin-top: 25px; font-weight: 400; font-family: 'Playfair Display', serif;"></p>
+    </form>
+</div>
 </section>
 
 <div id="lightbox" onclick="this.style.display='none'">
