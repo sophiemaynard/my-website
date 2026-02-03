@@ -93,35 +93,54 @@ input:focus, textarea:focus {
 .submit-btn:hover {
     background-color: #555;
 }
-       /* 9. FOOTER STYLES */
+      /* 9. FOOTER STYLES */
 footer {
-    padding: 60px 20px;
-    background-color: #fff;
+    padding: 80px 20px;
+    background-color: #fdfcfb; /* Matches your body background */
     border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Stacks the icon on top of the text */
+    align-items: center;    /* Centers everything inside the stack */
     text-align: center;
 }
 
-.footer-content p {
-    margin: 10px 0;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    color: #555;
-}
-
 .social-links {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .social-links a {
     color: #2c2c2c;
-    font-size: 1.5rem; /* Makes the icon a nice size */
+    font-size: 1.8rem; /* Slightly larger for better touch-access */
     text-decoration: none;
-    transition: opacity 0.3s;
+    transition: transform 0.3s ease, opacity 0.3s;
+    display: inline-block;
 }
 
 .social-links a:hover {
     opacity: 0.6;
-} 
+    transform: scale(1.1); /* Subtle pop effect on hover */
+}
+
+.footer-text p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: #555;
+    text-transform: uppercase; /* Clean, modern gallery look */
+}
+
+.footer-text .disclaimer {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    text-transform: none; /* Keeps the legal bit lowercase/normal */
+    margin-top: 10px;
+}
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -234,9 +253,12 @@ footer {
             <a href="https://instagram.com/yourhandle" target="_blank" aria-label="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            </div>
-        <p>&copy; 2026 Sophie Maynard | Fine Artist</p>
-        <p style="font-size: 0.7rem; opacity: 0.6;">All rights reserved. Images may not be used without permission.</p>
+        </div>
+        
+        <div class="footer-text">
+            <p>&copy; 2026 Sophie Maynard | Fine Artist</p>
+            <p class="disclaimer">All rights reserved. Images may not be used without permission.</p>
+        </div>
     </div>
 </footer>
     
