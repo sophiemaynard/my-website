@@ -175,7 +175,29 @@ footer {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-    
+
+/* MOBILE MENU RESPONSIVENESS */
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 15px 10px; /* Reduces spacing on small screens */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stacks links vertically */
+        gap: 15px; /* Adds space between stacked links */
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        margin: 0; /* Clears any desktop margins */
+    }
+
+    nav a {
+        font-size: 0.9rem; /* Slightly smaller text for mobile */
+        letter-spacing: 1px;
+    }
+}
+        
     </style>
 </head>
 <body>
