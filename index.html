@@ -180,14 +180,51 @@ footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); text
     opacity: 1;
     transform: translateY(0); /* Glides up to its natural position */
 }
-    
+    /* 11. CUSTOM LUXURY CURSOR */
+/* Hide the default cursor on desktop */
+@media (min-width: 992px) {
+    body { cursor: none; }
+    a, button, .gallery-item { cursor: none; }
+}
+
+.cursor {
+    width: 8px;
+    height: 8px;
+    background-color: #C5A059;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+}
+
+.cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #C5A059;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    /* This creates that elegant 'lagging' follow effect */
+    transition: transform 0.15s ease-out, opacity 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+/* Effect when hovering over links/buttons */
+.cursor-grow {
+    transform: scale(1.5);
+    background-color: rgba(197, 160, 89, 0.1);
+    border: none;
+}
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
 </head>
 <body>
-
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
 <nav>
     <a href="#about">The Artist</a>
     <a href="#philosophy">Philosophy</a>
@@ -257,7 +294,7 @@ footer { padding: 80px 20px; border-top: 1px solid rgba(197, 160, 89, 0.2); text
 
 <section id="contact" class="reveal">
     <h2>Studio Enquiries</h2>
-    <p>"I am pleased to open my studio for a select number of new commissions. As each piece is uniquely tailored and hand-crafted, availability is limited, so please get in touch to discuss your artwork requirements.</p>
+    <p>I am pleased to open my studio for a select number of new commissions. As each piece is uniquely tailored and hand-crafted, availability is limited, so please get in touch to discuss your artwork requirements.</p>
     
     <div class="contact-container">
     <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
