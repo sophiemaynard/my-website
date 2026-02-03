@@ -94,6 +94,58 @@
         /* 9. LIGHTBOX */
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
         #lightbox img { max-width: 90%; max-height: 85%; border: 4px solid white; }
+
+        /* ARTIST SECTION SPLIT LAYOUT */
+.artist-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    text-align: left; /* Aligns text professionally against the image */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.artist-image {
+    flex: 1;
+    line-height: 0;
+}
+
+.artist-image img {
+    width: 100%;
+    height: auto;
+    /* Optional: adds a very subtle "framed" look */
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    padding: 10px;
+    background: #fff;
+}
+
+.artist-bio {
+    flex: 1.2;
+}
+
+.artist-bio h2 {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.artist-bio h2::after {
+    margin: 20px 0 0 0; /* Moves the gold line to the left */
+}
+
+/* Responsive fix for mobile */
+@media (max-width: 768px) {
+    .artist-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .artist-bio h2 {
+        text-align: center;
+    }
+    .artist-bio h2::after {
+        margin: 20px auto 0;
+    }
+}
+    
     </style>
 </head>
 <body>
