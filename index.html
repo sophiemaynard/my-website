@@ -141,6 +141,41 @@
             .artist-bio h2, .philosophy-text h2 { text-align: center; }
             .artist-bio h2::after, .philosophy-text h2::after { margin: 20px auto 0; }
         }
+    /* FOOTER STYLING */
+footer {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #F9F8F4;
+    border-top: 1px solid rgba(197, 160, 89, 0.1);
+}
+.footer-social { margin-bottom: 20px; }
+.footer-social a {
+    color: #2D2926;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+.footer-social a:hover { color: #C5A059; }
+.footer-copy {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(45, 41, 38, 0.6);
+}
+
+/* THANK YOU MESSAGE STYLING */
+.thank-you-msg {
+    animation: fadeIn 0.8s ease forwards;
+    padding: 40px 0;
+}
+.thank-you-msg i { color: #C5A059; font-size: 2rem; margin-bottom: 20px; }
+.thank-you-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 10px; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+    
     </style>
 </head>
 <body>
@@ -258,12 +293,10 @@
     });
     lb.onclick = () => lb.style.display = 'none';
 
-    // FORM HANDLING
+    // FORM HANDLING LOGIC
     const form = document.getElementById('my-form');
-    const contactBox = document.getElementById('contact-box');
-    const contactIntro = document.getElementById('contact-intro');
-    const btn = document.getElementById('submit-btn');
-    const statusText = document.getElementById('my-form-status');
+    const contactBox = document.getElementById('contact-box'); // Ensure your contact div has id="contact-box"
+    const btn = document.querySelector('.submit-btn');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -279,27 +312,35 @@
         })
         .then(async (response) => {
             if (response.status == 200) {
-                // Success: Fade out intro and replace form with Thank You message
-                contactIntro.style.opacity = "0";
-                contactBox.innerHTML = `
+                // This replaces the form with the success message
+                form.parentElement.innerHTML = `
                     <div class="thank-you-msg">
                         <i class="fas fa-envelope-open-text"></i>
                         <h3>Thank You</h3>
-                        <p>I have received your enquiry and will personally review the details of your request.</p>
+                        <p>Your message has been received. I look forward to reviewing your vision and will respond to your enquiry shortly.</p>
                     </div>`;
             } else {
-                statusText.innerHTML = "Something went wrong. Please try again.";
-                btn.innerHTML = "Send Enquiry";
+                btn.innerHTML = "Error. Try Again";
             }
         })
         .catch(error => {
-            statusText.innerHTML = "Connection error. Please try again.";
-            btn.innerHTML = "Send Enquiry";
+            btn.innerHTML = "Error. Try Again";
         });
     });
 
     reveal();
 </script>
 
+<footer>
+    <div class="footer-social">
+        <a href="https://www.instagram.com/sophiemaynardart" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    <div class="footer-copy">
+        &copy; 2026 Sophie Maynard Art. All Rights Reserved.
+    </div>
+</footer>
+    
 </body>
 </html>
