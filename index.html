@@ -170,7 +170,10 @@ input:focus, textarea:focus {
     <p>Looking for a bespoke portrait? Let's discuss your project.</p>
     
     <div class="contact-container">
-        <form id="my-form" action="https://formspree.io/f/YOUR_UNIQUE_ID_HERE" method="POST">
+        <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
+            
+            <input type="hidden" name="access_key" value="9966907f-1acc-48e7-94c3-c8dbfbfddbb4">
+
             <div class="form-group">
                 <input type="text" name="name" placeholder="Your Name" required>
             </div>
@@ -178,8 +181,11 @@ input:focus, textarea:focus {
                 <input type="email" name="email" placeholder="Your Email Address" required>
             </div>
             <div class="form-group">
-                <textarea name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+                <textarea name="message" rows="6" placeholder="Tell me about your project, the subject, and any preferred size..." required></textarea>
             </div>
+
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
             <button id="my-form-button" type="submit" class="submit-btn">Send Message</button>
             
             <p id="my-form-status" style="margin-top: 20px; font-weight: bold;"></p>
@@ -192,7 +198,7 @@ input:focus, textarea:focus {
 </div>
 
 <script>
-    // 1. Lightbox Logic (Click to enlarge)
+    // 1. LIGHTBOX LOGIC (Enlarge Portfolio Images)
     document.querySelectorAll('.gallery-item img').forEach(image => {
         image.onclick = () => {
             document.getElementById('lightbox').style.display = 'flex';
@@ -200,41 +206,47 @@ input:focus, textarea:focus {
         }
     });
 
-    // 2. Seamless Form Submission Logic
-    var form = document.getElementById("my-form");
-    
-    async function handleSubmit(event) {
-      event.preventDefault();
-      var status = document.getElementById("my-form-status");
-      var data = new FormData(event.target);
-      
-      fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: {
-            'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          status.innerHTML = "Thanks! Your message has been sent. Sophie will get back to you soon.";
-          status.style.color = "green";
-          form.reset(); // Clears the form fields
-          document.getElementById("my-form-button").style.display = "none"; // Hides the button
-        } else {
-          response.json().then(data => {
-            if (Object.hasOwn(data, 'errors')) {
-              status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-            } else {
-              status.innerHTML = "Oops! There was a problem submitting your form";
-            }
+    // 2. SEAMLESS WEB3FORMS SUBMISSION
+    const form = document.getElementById('my-form');
+    const status = document.getElementById('my-form-status');
+    const button = document.getElementById('my-form-button');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      status.innerHTML = "Sending...";
+      status.style.color = "#777";
+
+      fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              },
+              body: json
           })
-        }
-      }).catch(error => {
-        status.innerHTML = "Oops! There was a problem connecting to the server";
-        status.style.color = "red";
-      });
-    }
-    form.addEventListener("submit", handleSubmit)
+          .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                  status.innerHTML = "Thanks! Your message has been sent. Sophie will be in touch soon.";
+                  status.style.color = "green";
+                  form.reset();
+                  button.style.display = "none"; // Hide button after success
+              } else {
+                  console.log(response);
+                  status.innerHTML = json.message;
+                  status.style.color = "red";
+              }
+          })
+          .catch(error => {
+              console.log(error);
+              status.innerHTML = "Something went wrong!";
+              status.style.color = "red";
+          });
+    });
 </script>
 
 </body>
