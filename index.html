@@ -168,6 +168,29 @@
         .review-text { font-family: var(--font-heading); font-size: 1.3rem; font-style: italic; color: #333; margin-bottom: 20px; line-height: 1.5; }
         .reviewer-name { font-family: var(--font-body); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-sage); font-weight: 700; }
 
+        /* --- COMMISSIONS GRID --- */
+        .commissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        .step-card {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03); /* Very subtle highlight */
+            border: 1px solid rgba(193, 154, 107, 0.2); /* Faint gold border */
+            border-radius: 2px;
+        }
+        .step-card h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .step-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc; /* Slightly lighter for readability on dark */ }
+        
         /* --- GALLERY --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
         .gallery-grid img { width: 100%; height: 350px; object-fit: cover; transition: 0.4s ease; filter: grayscale(10%); }
@@ -267,21 +290,37 @@
         </div>
     </section>
 
-    <section id="commissions" class="section-dark">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="eyebrow-light">Investment</span>
-                <h2>Commission Guide 2026</h2>
+   <section id="commissions" class="section-dark">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="eyebrow-light">Investment</span>
+            <h2>Commission Guide 2026</h2>
+        </div>
+        <p class="text-center" style="max-width: 800px; margin: 0 auto 50px;">Creating a bespoke piece of art is a collaborative journey. Whether we are capturing the character of a companion or designing a centerpiece for a room, I follow a thoughtful process to ensure the final work feels perfectly at home in your space.</p>
+        
+        <div class="commissions-grid">
+            <div class="step-card">
+                <span class="eyebrow-light">01</span>
+                <h3>Initial Enquiry & Availability</h3>
+                <p>I enjoy working closely with my clients, so I take on a limited number of commissions at a time. This ensures I can give your project the dedicated energy and care it deserves. The first step is a simple conversation to check my current availability and discuss what you have in mind for your piece.</p>
             </div>
-            <p>Creating a bespoke piece of art is a collaborative journey. Whether we are capturing the character of a companion or designing a centerpiece for a room, I follow a thoughtful process to ensure the final work feels perfectly at home in your space.</p>
-            <p><b>1. Initial Enquiry & Availability:</b> I enjoy working closely with my clients, so I take on a limited number of commissions at a time. This ensures I can give your project the dedicated energy and care it deserves. The first step is a simple conversation to check my current availability and discuss what you have in mind for your piece.</p>
-            <p><b>2. Consultation & Reference:</b> Once we move forward, we will have a consultation to discuss the requirements for your piece. For portraits, we will review and select the best reference photographs together to ensure we capture the right character. We will look at the specific room where the art will hang, discussing the lighting, the colour palette, and the overall atmosphere. This allows us to tailor the work so it perfectly complements the feel of the space.</p>
-            <p><b>3. The Creative Journey:</b>  Once the work begins, I provide updates along the way. This allows you to see the piece develop and ensures that the final artwork resonates with the spirit and style we discussed. Every commission is a partnership, resulting in an enduring work of art that is uniquely yours.</p>
-            <div class="text-center">
-                <a href="#contact" class="btn-gold">Enquire Today</a>
+            <div class="step-card">
+                <span class="eyebrow-light">02</span>
+                <h3>Consultation & Reference</h3>
+                <p>Once we move forward, we will have a consultation to discuss the requirements for your piece. For portraits, we will review and select the best reference photographs together to ensure we capture the right character. We will look at the specific room where the art will hang, discussing the lighting, the colour palette, and the overall atmosphere. This allows us to tailor the work so it perfectly complements the feel of the space.</p>
+            </div>
+            <div class="step-card">
+                <span class="eyebrow-light">03</span>
+                <h3>The Creative Journey</h3>
+                <p>Once the work begins, I provide updates along the way. This allows you to see the piece develop and ensures that the final artwork resonates with the spirit and style we discussed. Every commission is a partnership, resulting in an enduring work of art that is uniquely yours.</p>
             </div>
         </div>
-    </section>
+        
+        <div class="text-center mt-2">
+            <a href="#contact" class="btn-gold">Enquire Today</a>
+        </div>
+    </div>
+</section>
 
     <section id="testimonials" class="section-padding bg-cream">
         <div class="container">
